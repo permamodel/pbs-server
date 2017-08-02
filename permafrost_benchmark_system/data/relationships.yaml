@@ -1,0 +1,15 @@
+# A dictionary of ILAMB longnames and benchmark data sources associated
+# with a CMIP5 variable.
+
+albedo: Albedo/CERES
+biomass: Biomass/GlobalCarbon
+gpp: GrossPrimaryProduction/Fluxnet-MTE
+lai: LeafAreaIndex/AVHRR
+le: LatentHeat/Fluxnet-MTE
+nee: NetEcosystemExchange/GBAF
+nep:
+pr: Precipitation/GPCP2
+reco:
+rsds: SurfaceDownwardSWRadiation/CERES
+rsus:
+tas: SurfaceAirTemperature/CRU
