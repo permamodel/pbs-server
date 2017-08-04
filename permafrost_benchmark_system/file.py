@@ -13,7 +13,7 @@ class IlambConfigFile(object):
     sources_file = os.path.join(data_directory, 'cmip5-variables.yaml')
 
     def __init__(self,
-                 variables=('gpp',),
+                 variables,
                  relationships=False,
                  config_file='ilamb.cfg'):
 
