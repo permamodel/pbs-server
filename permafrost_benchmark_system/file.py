@@ -61,7 +61,7 @@ class IlambConfigFile(object):
             self.add_relationships()
 
     def get_template_file(self, var_name):
-        """Gets path to a variable's template file.
+        """Get path to a variable's template file.
 
         Parameters
         ----------
@@ -72,7 +72,7 @@ class IlambConfigFile(object):
         return os.path.join(data_directory, var_name + '.cfg.tmpl')
 
     def read(self, var_name):
-        """Reads configuration information from a template file.
+        """Read configuration information from a template file.
 
         Parameters
         ----------
@@ -84,10 +84,12 @@ class IlambConfigFile(object):
         self.config[var_name].read(tmpl_file)
 
     def get_sources(self):
+        """Load long name and benchmark source info for all variables."""
         with open(self.sources_file, 'r') as fp:
             self.sources = yaml.safe_load(fp)
 
     def add_relationships(self):
+        """Add all relationships for a variable."""
         for var in self.variables:
             all_vars = list(self.variables)
             all_vars.pop(all_vars.index(var))
@@ -103,7 +105,7 @@ class IlambConfigFile(object):
             self.config[var].set(self.sources[var]['benchmark_source'], 'relationships', rel_string)
 
     def write(self):
-        """Writes an ILAMB config file."""
+        """Write an ILAMB config file."""
         with open(self.config_file, 'w') as fp:
             self._write_header(fp)
             for var in self.variables:
