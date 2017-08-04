@@ -34,9 +34,10 @@ class IlambConfigFile(object):
 
         Examples
         --------
-        Set up and create an ILAMB config file for *gpp*:
+        Set up and write an ILAMB config file for *gpp*:
 
         >>> f = IlambConfigFile('gpp')
+        >>> f.setup()
         >>> f.write()
 
         """
@@ -47,8 +48,10 @@ class IlambConfigFile(object):
         self.has_relationships = relationships
         self.sources = None
         self.config_file = config_file
-
         self.config = dict()
+
+    def setup(self):
+        """Generate settings for an ILAMB config file."""
         for var in self.variables:
             self.config[var] = SafeConfigParser()
             self.read(var)
