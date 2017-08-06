@@ -93,16 +93,13 @@ class IlambConfigFile(object):
         for var in self.variables:
             all_vars = list(self.variables)
             all_vars.pop(all_vars.index(var))
-            relations = list()
-            for other in all_vars:
-                other_src = '/'.join([self.sources[other]['long_name'], self.sources[other]['benchmark_source']])
-                other_src = '"' + other_src + '"'
-                relations.append(other_src)
+            relations = _make_relationships(all_vars)
             if len(all_vars) > 1:
                 rel_string = ','.join(relations)
             else:
                 rel_string = relations[0]
-            self.config[var].set(self.sources[var]['benchmark_source'], 'relationships', rel_string)
+            self.config[var].set(self.sources[var]['benchmark_source'],
+                                 'relationships', rel_string)
 
     def write(self):
         """Write an ILAMB config file."""
@@ -116,3 +113,11 @@ class IlambConfigFile(object):
         with open(header_file, 'r') as ifp:
             header = ifp.read()
         ofp.write(header + '\n')
+
+    def _make_relationships(self, var_list):
+        relations = list()
+        for var in var_list:
+            src = '/'.join([self.sources[var]['long_name'],
+                            self.sources[var]['benchmark_source']])
+            relations.append('"' + src + '"')
+        return relations
