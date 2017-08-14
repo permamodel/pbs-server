@@ -1,4 +1,6 @@
 """Tests for the IlambConfigFile class."""
+import os
+import filecmp
 import numpy as np
 from nose.tools import raises, assert_true, assert_false, assert_equal
 from ConfigParser import SafeConfigParser
@@ -7,6 +9,10 @@ from permafrost_benchmark_system import data_directory
 
 
 default_config_file = 'ilamb.cfg'
+default_config_file_path = os.path.join(data_directory, default_config_file)
+n_sources = 12
+gpp_template_file = 'gpp.cfg.tmpl'
+relationship = '"LeafAreaIndex/AVHRR"'
 
 
 @raises(TypeError)
@@ -69,6 +75,61 @@ def test_relationships_user():
     assert_true(x.has_relationships)
 
 
+def test_get_template_file():
+    param = 'gpp'
+    x = IlambConfigFile(param)
+    tmpl_file = x.get_template_file(param)
+    assert_equal(tmpl_file, os.path.join(data_directory, gpp_template_file))
+
+
+@raises(IOError)
+def test_get_template_file_unknown_variable():
+    param = 'foo'
+    x = IlambConfigFile(param)
+    tmpl_file = x.get_template_file(param)
+
+
+def test_read_method():
+    param = 'gpp'
+    x = IlambConfigFile(param)
+    x.read(param)
+    assert_true(isinstance(x.config[param], SafeConfigParser))
+
+
+def test_read_method_multiple_variables():
+    param = ('gpp', 'lai', 'le')
+    x = IlambConfigFile(param, relationships=True)
+    for var in x.variables:
+        x.read(var)
+        assert_true(isinstance(x.config[var], SafeConfigParser))
+    assert_equal(len(param), len(x.config.keys()))
+
+
+@raises(IOError)
+def test_read_method_unknown_variable():
+    param = 'foo'
+    x = IlambConfigFile(param)
+    x.read(param)
+
+
+def test_get_sources():
+    param = 'gpp'
+    x = IlambConfigFile(param)
+    x.get_sources()
+    assert_equal(len(x.sources), n_sources)
+
+
+def test_add_relationships():
+    param = ('gpp', 'lai')
+    x = IlambConfigFile(param, relationships=True)
+    for var in x.variables:
+        x.read(var)
+    x.get_sources()
+    x.add_relationships()
+    rel = x.config['gpp'].get('Fluxnet-MTE', 'relationships')
+    assert_equal(relationship, rel)
+
+
 def test_setup():
     param = 'gpp'
     x = IlambConfigFile(param)
@@ -76,3 +137,9 @@ def test_setup():
     assert_true(isinstance(x.config[param], SafeConfigParser))
 
 
+def test_write():
+    param = 'gpp'
+    x = IlambConfigFile(param)
+    x.setup()
+    x.write()
+    assert_true(filecmp.cmp(default_config_file_path, default_config_file))
