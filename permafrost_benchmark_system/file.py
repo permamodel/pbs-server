@@ -98,7 +98,7 @@ class IlambConfigFile(object):
         for var in self.variables:
             all_vars = list(self.variables)
             all_vars.pop(all_vars.index(var))
-            relations = _make_relationships(all_vars)
+            relations = self._make_relationships(all_vars)
             if len(all_vars) > 1:
                 rel_string = ','.join(relations)
             else:
