@@ -45,10 +45,12 @@ class IlambConfigFile(object):
             self.variables = variables,
         else:
             self.variables = variables
-        self.has_relationships = relationships
         self.sources = None
         self.config_file = config_file
         self.config = dict()
+        self.has_relationships = relationships
+        if len(self.variables) < 2 and self.has_relationships:
+            raise TypeError('Two variables are needed for a relationship')
 
     def setup(self):
         """Generate settings for an ILAMB config file."""

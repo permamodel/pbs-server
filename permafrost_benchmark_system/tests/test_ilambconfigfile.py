@@ -70,9 +70,15 @@ def test_relationships_default():
 
 
 def test_relationships_user():
-    param = 'gpp'
+    param = ['gpp', 'le']
     x = IlambConfigFile(param, relationships=True)
     assert_true(x.has_relationships)
+
+
+@raises(TypeError)
+def test_relationships_fails_with_fewer_than_two_variables():
+    param = 'gpp'
+    x = IlambConfigFile(param, relationships=True)
 
 
 def test_get_template_file():
