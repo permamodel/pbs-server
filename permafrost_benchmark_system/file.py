@@ -53,7 +53,6 @@ class IlambConfigFile(object):
     def setup(self):
         """Generate settings for an ILAMB config file."""
         for var in self.variables:
-            self.config[var] = SafeConfigParser()
             self.read(var)
 
         if self.has_relationships and len(self.variables) > 1:
@@ -81,6 +80,7 @@ class IlambConfigFile(object):
 
         """
         tmpl_file = self.get_template_file(var_name)
+        self.config[var_name] = SafeConfigParser()
         self.config[var_name].read(tmpl_file)
 
     def get_sources(self):
