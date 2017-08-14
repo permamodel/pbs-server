@@ -68,7 +68,12 @@ class IlambConfigFile(object):
             The CMIP5 short name for a variable.
 
         """
-        return os.path.join(data_directory, var_name + '.cfg.tmpl')
+        base_file = var_name + '.cfg.tmpl'
+        tmpl_file = os.path.join(data_directory, base_file)
+        if not os.path.isfile(tmpl_file):
+            raise IOError('Not a file: ' + base_file)
+        else:
+            return tmpl_file
 
     def read(self, var_name):
         """Read configuration information from a template file.
