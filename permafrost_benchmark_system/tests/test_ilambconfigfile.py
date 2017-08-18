@@ -143,6 +143,14 @@ def test_setup():
     assert_true(isinstance(x.config[param], SafeConfigParser))
 
 
+def test_setup_with_relationships():
+    param = ('gpp', 'lai')
+    x = IlambConfigFile(param, relationships=True)
+    x.setup()
+    for p in param:
+        assert_true(isinstance(x.config[p], SafeConfigParser))
+
+
 def test_write():
     param = 'gpp'
     x = IlambConfigFile(param)
