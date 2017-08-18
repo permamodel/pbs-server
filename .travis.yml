@@ -1,0 +1,38 @@
+language: generic
+
+os:
+  - linux
+  - osx
+
+env:
+  global:
+    - CONDA_PREFIX=$HOME/miniconda
+    - MINICONDA_URL_BASE="https://repo.continuum.io/miniconda/Miniconda2-latest"
+    - TRAVIS_PYTHON_VERSION="2.7"
+
+sudo: false
+
+before_install:
+  - |
+    if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
+      OS="MacOSX-x86_64"
+    else
+      OS="Linux-x86_64"
+    fi
+  - curl $MINICONDA_URL_BASE-$OS.sh > $HOME/minconda.sh
+  - bash $HOME/minconda.sh -b -p $CONDA_PREFIX
+  - export PATH="$CONDA_PREFIX/bin:$PATH"
+  - hash -r
+  - conda config --set always_yes yes --set changeps1 no
+  - conda install python=$TRAVIS_PYTHON_VERSION
+  - conda install numpy nose pyyaml
+  - pip install coveralls
+
+install:
+  - python setup.py install
+
+script:
+  - nosetests --with-doctest --with-coverage --cover-package=permafrost_benchmark_system
+
+after_success:
+  - coveralls --verbose
