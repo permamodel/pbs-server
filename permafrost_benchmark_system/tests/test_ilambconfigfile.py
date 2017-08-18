@@ -144,7 +144,7 @@ def test_setup():
 
 
 def test_setup_with_relationships():
-    param = ('gpp', 'lai')
+    param = ('gpp', 'lai', 'le')
     x = IlambConfigFile(param, relationships=True)
     x.setup()
     for p in param:
