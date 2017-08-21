@@ -6,6 +6,27 @@ from ConfigParser import SafeConfigParser
 from . import data_directory
 
 
+def get_region_labels_txt(regions_file):
+    """Get the labels for custom regions from a text file.
+
+    Parameters
+    ----------
+    regions_file : str
+        A text file containing custom region definitions.
+
+    Returns
+    ----------
+    list
+        A list of custom region labels.
+
+    """
+    labels = []
+    with open(regions_file, 'r') as fp:
+        line = fp.readline()
+        labels.append(line.split(',')[0])
+    return labels
+
+
 class IlambConfigFile(object):
 
     """Tool for generating an ILAMB config file."""
