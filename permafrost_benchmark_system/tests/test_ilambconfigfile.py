@@ -17,7 +17,7 @@ relationship = '"LeafAreaIndex/AVHRR"'
 
 @raises(TypeError)
 def test_init_no_parameters():
-    x = IlambConfigFile()
+    IlambConfigFile()
 
 
 def test_init_string_variable():
@@ -78,7 +78,7 @@ def test_relationships_user():
 @raises(TypeError)
 def test_relationships_fails_with_fewer_than_two_variables():
     param = 'gpp'
-    x = IlambConfigFile(param, relationships=True)
+    IlambConfigFile(param, relationships=True)
 
 
 def test_get_template_file():
@@ -92,7 +92,7 @@ def test_get_template_file():
 def test_get_template_file_unknown_variable():
     param = 'foo'
     x = IlambConfigFile(param)
-    tmpl_file = x.get_template_file(param)
+    x.get_template_file(param)
 
 
 def test_read_method():

@@ -1,7 +1,7 @@
 """Tests for the file module, minus the IlambConfigFile class."""
 
 import os
-from nose.tools import raises, assert_true, assert_false, assert_equal
+from nose.tools import raises, assert_true, assert_equal
 from permafrost_benchmark_system.file import (get_region_labels_txt,
                                               get_region_labels_ncdf)
 from permafrost_benchmark_system import data_directory
@@ -17,7 +17,7 @@ labels_nc = ['Amazon', 'Ob', 'Lena']
 
 @raises(IOError)
 def test_get_region_labels_txt_path():
-    x = get_region_labels_txt(regions_file_txt)
+    get_region_labels_txt(regions_file_txt)
 
 
 def test_get_region_labels_txt_type():
@@ -32,7 +32,7 @@ def test_get_region_labels_txt_value():
 
 @raises(IOError)
 def test_get_region_labels_ncdf_path():
-    x = get_region_labels_ncdf(regions_file_nc)
+    get_region_labels_ncdf(regions_file_nc)
 
 
 def test_get_region_labels_ncdf_type():
