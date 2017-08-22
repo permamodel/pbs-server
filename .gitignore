@@ -100,5 +100,8 @@ ENV/
 # mypy
 .mypy_cache/
 
+# Emacs backups
+*~
+
 # PBS
 ilamb.cfg
