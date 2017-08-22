@@ -25,7 +25,7 @@ before_install:
   - hash -r
   - conda config --set always_yes yes --set changeps1 no
   - conda install python=$TRAVIS_PYTHON_VERSION
-  - conda install numpy nose pyyaml
+  - conda install numpy nose pyyaml netcdf4
   - pip install coveralls
 
 install:
