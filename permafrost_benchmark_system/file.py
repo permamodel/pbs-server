@@ -43,12 +43,14 @@ def get_region_labels_ncdf(regions_file):
         A list of custom region labels.
 
     """
-    labels = []
+    labels = region_labels = []
     fid = Dataset(regions_file)
     for k, v in fid.variables.iteritems():
         if len(v.dimensions) == 2 and "labels" in v.ncattrs():
             labels = fid.variables[v.labels][...]
-    return list(labels)
+    for label in labels:
+        region_labels.append(label.lower())
+    return region_labels
 
 
 class IlambConfigFile(object):

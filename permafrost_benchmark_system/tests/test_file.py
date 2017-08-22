@@ -12,7 +12,7 @@ regions_file_txt_path = os.path.join(data_directory, regions_file_txt)
 labels_txt = ['tropics', 'afritrop']
 regions_file_nc = 'basins_0.5x0.5.nc'
 regions_file_nc_path = os.path.join(data_directory, regions_file_nc)
-labels_nc = ['Amazon', 'Ob', 'Lena']
+labels_nc = ['amazon', 'ob', 'lena']
 
 
 @raises(IOError)
