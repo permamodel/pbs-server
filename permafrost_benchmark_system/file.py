@@ -22,7 +22,8 @@ def get_region_labels_txt(regions_file):
     """
     labels = []
     with open(regions_file, 'r') as fp:
-        line = fp.readline()
+        lines = fp.readlines()
+    for line in lines:
         labels.append(line.split(',')[0])
     return labels
 
