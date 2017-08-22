@@ -2,8 +2,53 @@
 
 import os
 import yaml
+from netCDF4 import Dataset
 from ConfigParser import SafeConfigParser
 from . import data_directory
+
+
+def get_region_labels_txt(regions_file):
+    """Get the labels for custom ILAMB regions from a text file.
+
+    Parameters
+    ----------
+    regions_file : str
+        A text file containing ILAMB custom region definitions.
+
+    Returns
+    ----------
+    list
+        A list of custom region labels.
+
+    """
+    labels = []
+    with open(regions_file, 'r') as fp:
+        lines = fp.readlines()
+    for line in lines:
+        labels.append(line.split(',')[0])
+    return labels
+
+
+def get_region_labels_ncdf(regions_file):
+    """Get the labels for custom ILAMB regions from a netCDF file.
+
+    Parameters
+    ----------
+    regions_file : str
+        A netCDF file containing ILAMB custom region definitions.
+
+    Returns
+    ----------
+    list
+        A list of custom region labels.
+
+    """
+    labels = []
+    fid = Dataset(regions_file)
+    for k, v in fid.variables.iteritems():
+        if len(v.dimensions) == 2 and "labels" in v.ncattrs():
+            labels = fid.variables[v.labels][...]
+    return list(labels)
 
 
 class IlambConfigFile(object):
