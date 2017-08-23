@@ -62,7 +62,8 @@ class IlambConfigFile(object):
     def __init__(self,
                  variables,
                  relationships=False,
-                 config_file='ilamb.cfg'):
+                 config_file='ilamb.cfg',
+                 title='Permafrost Benchmark System'):
 
         """Set parameters for an ILAMB config file.
 
@@ -78,6 +79,9 @@ class IlambConfigFile(object):
         config_file : str, optional
             The name of the ILAMB config file (default is
             **ilamb.cfg**).
+        title : str, optional
+            A name for the ILAMB run (default is *Permafrost Benchmark
+            System*).
 
         Examples
         --------
@@ -98,6 +102,7 @@ class IlambConfigFile(object):
         self.has_relationships = relationships
         if len(self.variables) < 2 and self.has_relationships:
             raise TypeError('Two variables are needed for a relationship')
+        self.title = title
 
     def setup(self):
         """Generate settings for an ILAMB config file."""
@@ -163,10 +168,13 @@ class IlambConfigFile(object):
                 self.config[var].write(fp)
 
     def _write_header(self, ofp):
-        header_file = self.get_template_file('header')
-        with open(header_file, 'r') as ifp:
-            header = ifp.read()
-        ofp.write(header + '\n')
+        header = '''
+# Benchmark CMIP5-compatible model outputs against available datasets.
+
+[h1: {}]
+bgcolor = "#FFECE6"{}
+'''.strip().format(self.title, '\n\n')
+        ofp.write(header)
 
     def _make_relationships(self, var_list):
         relations = list()
