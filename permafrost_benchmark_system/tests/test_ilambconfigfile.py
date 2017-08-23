@@ -13,6 +13,7 @@ default_config_file_path = os.path.join(data_directory, default_config_file)
 n_sources = 12
 gpp_template_file = 'gpp.cfg.tmpl'
 relationship = '"LeafAreaIndex/AVHRR"'
+default_title = 'Permafrost Benchmark System'
 
 
 @raises(TypeError)
@@ -61,6 +62,19 @@ def test_config_file_user():
     config_file = 'foo.cfg'
     x = IlambConfigFile(param, config_file=config_file)
     assert_equal(x.config_file, config_file)
+
+
+def test_title_default():
+    param = 'gpp'
+    x = IlambConfigFile(param)
+    assert_equal(x.title, default_title)
+
+
+def test_title_user():
+    param = 'gpp'
+    title = 'ILAMB rulz!'
+    x = IlambConfigFile(param, title=title)
+    assert_equal(x.title, title)
 
 
 def test_relationships_default():
