@@ -49,7 +49,7 @@ def get_region_labels_ncdf(regions_file):
         if len(v.dimensions) == 2 and "labels" in v.ncattrs():
             labels = fid.variables[v.labels][...]
     for label in labels:
-        region_labels.append(label.lower())
+        region_labels.append(label.lower().encode('utf-8'))
     return region_labels
 
 
