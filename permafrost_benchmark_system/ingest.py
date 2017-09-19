@@ -1,7 +1,7 @@
 """Perform ingest operations in PBS."""
 
 
-class ModelIngest(object)
+class ModelIngest(object):
 
     """Operator for uploading model outputs into PBS."""
 
@@ -9,7 +9,7 @@ class ModelIngest(object)
         pass
 
 
-class BenchmarkIngest(object)
+class BenchmarkIngest(object):
 
     """Operator for uploading benchmark datasets into PBS."""
 
