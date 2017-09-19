@@ -1,0 +1,43 @@
+ingest_file1:
+  description: Benchmark file 1 (required)
+  value:
+    type: file
+    default: 'Off'
+    files:
+      - 'Off'
+ingest_file2:
+  description: Benchmark file 2
+  value:
+    type: file
+    default: 'Off'
+    files:
+      - 'Off'
+ingest_file3:
+  description: Benchmark file 3
+  value:
+    type: file
+    default: 'Off'
+    files:
+      - 'Off'
+ingest_file4:
+  description: Benchmark file 4
+  value:
+    type: file
+    default: 'Off'
+    files:
+      - 'Off'
+ingest_file5:
+  description: Benchmark file 5
+  value:
+    type: file
+    default: 'Off'
+    files:
+      - 'Off'
+make_public:
+  description: Allow others to use these benchmark datasets?
+  value:
+    type: choice
+    default: 'Yes'
+    choices:
+      - 'Yes'
+      - 'No'
