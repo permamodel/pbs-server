@@ -12,7 +12,8 @@ setup(name='permafrost-benchmark-system',
       long_description=open('README.md').read(),
       install_requires=[
           'pyyaml',
-          'netCDF4'
+          'netCDF4',
+          'basic-modeling-interface',
       ],
       packages=find_packages(exclude=['*.tests']),
       include_package_data=True,
