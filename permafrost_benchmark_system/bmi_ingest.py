@@ -55,6 +55,7 @@ class BmiModelIngestTool(BmiIngestToolBase):
     _component_name = 'ModelIngestTool'
 
     def __init__(self):
+        super(BmiModelIngestTool, self).__init__()
         self._tool = ModelIngest()
 
 
@@ -63,4 +64,5 @@ class BmiBenchmarkIngestTool(BmiIngestToolBase):
     _component_name = 'BenchmarkIngestTool'
 
     def __init__(self):
+        super(BmiBenchmarkIngestTool, self).__init__()
         self._tool = BenchmarkIngest()
