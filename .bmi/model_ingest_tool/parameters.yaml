@@ -1,43 +1,14 @@
-ingest_file1:
-  description: Model output file 1 (required)
+ingest_files:
+  description:
+    A list of model output files to ingest
   value:
-    type: file
-    default: 'Off'
-    files:
-      - 'Off'
-ingest_file2:
-  description: Model output file 2
-  value:
-    type: file
-    default: 'Off'
-    files:
-      - 'Off'
-ingest_file3:
-  description: Model output file 3
-  value:
-    type: file
-    default: 'Off'
-    files:
-      - 'Off'
-ingest_file4:
-  description: Model output file 4
-  value:
-    type: file
-    default: 'Off'
-    files:
-      - 'Off'
-ingest_file5:
-  description: Model output file 5
-  value:
-    type: file
-    default: 'Off'
-    files:
-      - 'Off'
+    type: list
+    default: []
 make_public:
   description: Allow others to use these model outputs?
   value:
     type: choice
-    default: 'Yes'
+    default: true
     choices:
-      - 'Yes'
-      - 'No'
+      - true
+      - false
