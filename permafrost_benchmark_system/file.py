@@ -183,3 +183,26 @@ bgcolor = "#FFECE6"{}
                             self.sources[var]['benchmark_source']])
             relations.append('"' + src + '"')
         return relations
+
+
+class IngestFile(object):
+    """
+    A file of model outputs or benchmark data to be ingested into PBS.
+
+    Attributes
+    ----------
+    name : str
+      The name of the file.
+    is_valid : bool
+      Set to True if the file is a valid model output or benchmark
+      data file.
+
+    Parameters
+    ----------
+    filename : str or None, optional
+      The name of the file (default is None).
+
+    """
+    def __init__(self, filename=None):
+        self.name = filename
+        self.is_valid = False

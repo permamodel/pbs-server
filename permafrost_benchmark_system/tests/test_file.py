@@ -3,7 +3,8 @@
 import os
 from nose.tools import raises, assert_true, assert_equal
 from permafrost_benchmark_system.file import (get_region_labels_txt,
-                                              get_region_labels_ncdf)
+                                              get_region_labels_ncdf,
+                                              IngestFile)
 from permafrost_benchmark_system import data_directory
 
 
@@ -43,3 +44,19 @@ def test_get_region_labels_ncdf_type():
 def test_get_region_labels_ncdf_value():
     x = get_region_labels_ncdf(regions_file_nc_path)
     assert_equal(x[0:3], labels_nc)
+
+
+def test_ingestfile_no_params():
+    x = IngestFile()
+    assert_true(isinstance(x, IngestFile))
+
+
+def test_ingestfile_one_param():
+    x = IngestFile(regions_file_nc)
+    assert_true(x.name, regions_file_nc)
+
+
+def test_ingestfile_set_name():
+    x = IngestFile()
+    x.name = regions_file_nc
+    assert_true(x.name, regions_file_nc)
