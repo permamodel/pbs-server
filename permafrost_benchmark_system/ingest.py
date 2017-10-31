@@ -39,14 +39,12 @@ class ModelIngest(object):
     def move(self):
         for f in self.ingest_files:
             if f.is_valid:
-                msg = ''
+                msg = file_moved_msg.format(f.name, models_dir)
                 try:
                     shutil.move(f.name, models_dir)
                 except:
                     msg = file_exists_msg.format(f.name, models_dir)
                     os.remove(f.name)
-                else:
-                    msg = file_moved_msg.format(f.name, models_dir)
                 finally:
                     self._leave_file_note(f.name, msg)
 
