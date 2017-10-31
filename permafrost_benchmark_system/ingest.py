@@ -63,9 +63,14 @@ class ModelIngest(object):
         for f in self.ingest_files:
             f.is_valid = True
 
-    def move(self):
+    def move(self, dest=None):
         """
         Move ingest files to the ILAMB MODELS directory.
+
+        Parameters
+        ----------
+        dest : str, optional
+          The destination path (default is None).
 
         Notes
         -----
@@ -75,13 +80,15 @@ class ModelIngest(object):
         the file was not moved.
 
         """
+        if not dest:
+            dest = models_dir
         for f in self.ingest_files:
             if f.is_valid:
-                msg = file_moved_msg.format(f.name, models_dir)
+                msg = file_moved_msg.format(f.name, dest)
                 try:
-                    shutil.move(f.name, models_dir)
+                    shutil.move(f.name, dest)
                 except:
-                    msg = file_exists_msg.format(f.name, models_dir)
+                    msg = file_exists_msg.format(f.name, dest)
                     os.remove(f.name)
                 finally:
                     self._leave_file_note(f.name, msg)
