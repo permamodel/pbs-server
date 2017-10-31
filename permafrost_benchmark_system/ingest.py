@@ -6,6 +6,13 @@ from .file import IngestFile
 
 
 models_dir = '/nas/data/tmp'
+file_exists_msg = '''# File Exists\n
+The file `{1}/{0}` already exists in the PBS data store.
+The file has not been updated.
+'''
+file_moved_msg = '''# File Moved\n
+The file `{}` has been moved to `{}` in the PBS data store.
+'''
 
 
 class ModelIngest(object):
@@ -32,27 +39,20 @@ class ModelIngest(object):
     def move(self):
         for f in self.ingest_files:
             if f.is_valid:
+                msg = ''
                 try:
                     shutil.move(f.name, models_dir)
                 except:
-                    _leave_file_exists_note(f.name)
+                    msg = file_exists_msg.format(f.name, models_dir)
                     os.remove(f.name)
                 else:
-                    _leave_file_moved_note(f.name)
+                    msg = file_moved_msg.format(f.name, models_dir)
+                finally:
+                    self._leave_file_note(f.name, msg)
 
-    def _leave_file_exists_note(self, filename):
-        msg = '''# File Exists\n
-The file `{1}/{0}` already exists in the PBS data store. The file has not been updated.
-'''.format(filename, models_dir)
+    def _leave_file_note(self, filename, mesg):
         with open(filename + '.txt', 'w') as fp:
-            fp.write(msg)
-
-    def _leave_file_moved_note(self, filename):
-        msg = '''# File Moved\n
-The file `{}` has been moved to `{}` in the PBS data store.
-'''.format(filename, models_dir)
-        with open(filename + '.txt', 'w') as fp:
-            fp.write(msg)
+            fp.write(mesg)
 
     def cleanup(self):
         pass
