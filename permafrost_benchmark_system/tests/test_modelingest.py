@@ -77,20 +77,20 @@ def test_leave_file_note():
 
 
 def test_move_file_new():
-    x = ModelIngest()
+    x = ModelIngest(models_dir=tmp_dir)
     x.load(ingest_file)
     x.validate()
-    x.move(tmp_dir)
-    assert_true(os.path.isfile(os.path.join('tmp', model_file)))
+    x.move()
+    assert_true(os.path.isfile(os.path.join(tmp_dir, model_file)))
     assert_true(os.path.isfile(note_file))
 
 
 def test_move_file_exists():
     make_test_files()
-    x = ModelIngest()
+    x = ModelIngest(models_dir=tmp_dir)
     x.load(ingest_file)
     x.validate()
-    x.move(tmp_dir)
+    x.move()
     assert_true(os.path.isfile(os.path.join('tmp', model_file)))
     assert_true(os.path.isfile(note_file))
 
