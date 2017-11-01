@@ -30,7 +30,7 @@ class BmiIngestToolBase(Bmi):
         self.update()
 
     def finalize(self):
-        pass
+        self._tool = None
 
     def get_input_var_names(self):
         return ()
