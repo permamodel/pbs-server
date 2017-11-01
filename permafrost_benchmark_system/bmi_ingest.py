@@ -18,15 +18,19 @@ class BmiIngestToolBase(Bmi):
 
     def initialize(self, filename):
         self._config_file = filename
+        self._tool.load(self._config_file)
 
     def update(self):
-        self._time = self.get_end_time()
+        if self.get_current_time() < self.get_end_time():
+            self._time = self.get_end_time()
+            self._tool.validate()
+            self._tool.move()
 
     def update_until(self, time):
         self.update()
 
     def finalize(self):
-        pass
+        self._tool = None
 
     def get_input_var_names(self):
         return ()
