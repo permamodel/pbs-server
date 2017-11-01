@@ -94,9 +94,6 @@ class ModelIngest(object):
         with open(filename + '.txt', 'w') as fp:
             fp.write(mesg)
 
-    def cleanup(self):
-        pass
-
 
 class BenchmarkIngest(object):
 

@@ -79,7 +79,3 @@ def test_move_file_exists():
     x.move()
     assert_true(os.path.isfile(os.path.join('tmp', model_file)))
     assert_true(os.path.isfile(note_file))
-
-
-def test_cleanup():
-    pass
