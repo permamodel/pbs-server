@@ -36,9 +36,15 @@ def teardown_module():
             pass
 
 
-def test_init_no_parameters():
+def test_init():
     x = ModelIngest()
     assert_true(isinstance(x, ModelIngest))
+
+
+def test_init_with_models_dir():
+    x = ModelIngest(models_dir=tmp_dir)
+    assert_true(isinstance(x, ModelIngest))
+    assert_equal(x.models_dir, tmp_dir)
 
 
 def test_load():
@@ -47,9 +53,16 @@ def test_load():
     assert_equal(x.ingest_files[0].name, model_file)
 
 
-def test_init_one_parameter():
+def test_init_with_ingest_file():
     x = ModelIngest(ingest_file=ingest_file)
+    assert_true(isinstance(x, ModelIngest))
     assert_equal(x.ingest_files[0].name, model_file)
+
+
+def test_set_models_dir():
+    x = ModelIngest()
+    x.models_dir = tmp_dir
+    assert_equal(x.models_dir, tmp_dir)
 
 
 def test_validate():

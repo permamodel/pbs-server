@@ -6,8 +6,6 @@ import yaml
 from .file import IngestFile
 
 
-models_dir = '/nas/data/tmp'
-
 file_exists_msg = '''# File Exists\n
 The file `{1}/{0}` already exists in the PBS data store.
 The file has not been updated.
@@ -25,16 +23,21 @@ class ModelIngest(object):
     ----------
     ingest_file : str, optional
       Path to the configuration file (default is None).
+    models_dir : str, optional
+      Path to the ILAMB MODELS directory (default is /nas/data/ilamb/MODELS).
 
     Attributes
     ----------
+    models_dir : str
+      Path to the ILAMB MODELS directory.
     ingest_files : list
       List of files to ingest.
     make_public : bool
       Set to True to allow others to see and use ingested files.
 
     """
-    def __init__(self, ingest_file=None):
+    def __init__(self, ingest_file=None, models_dir='/nas/data/ilamb/MODELS'):
+        self.models_dir = models_dir
         self.ingest_files = []
         self.make_public = True
         if ingest_file is not None:
