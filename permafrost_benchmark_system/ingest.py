@@ -85,7 +85,8 @@ class ModelIngest(object):
                     shutil.move(f.name, self.models_dir)
                 except:
                     msg = file_exists_msg.format(f.name, self.models_dir)
-                    os.remove(f.name)
+                    if os.path.exists(f.name):
+                        os.remove(f.name)
                 finally:
                     self._leave_file_note(f.name, msg)
 
