@@ -15,9 +15,9 @@ The file `{}` has been moved to `{}` in the PBS data store.
 '''
 
 
-class ModelIngest(object):
+class ModelIngestTool(object):
     """
-    Operator for uploading model outputs into PBS.
+    Tool for uploading CMIP5-compatible model outputs into PBS.
 
     Parameters
     ----------
@@ -95,9 +95,9 @@ class ModelIngest(object):
             fp.write(mesg)
 
 
-class BenchmarkIngest(object):
+class BenchmarkIngestTool(object):
 
-    """Operator for uploading benchmark datasets into PBS."""
+    """Tool for uploading benchmark datasets into PBS."""
 
     def __init__(self):
         pass
