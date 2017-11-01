@@ -23,7 +23,7 @@ class BmiIngestToolBase(Bmi):
     def update(self):
         if self.get_current_time() < self.get_end_time():
             self._time = self.get_end_time()
-            self._tool.validate()
+            self._tool.verify()
             self._tool.move()
 
     def update_until(self, time):

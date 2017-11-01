@@ -51,7 +51,7 @@ def test_set_models_dir():
     assert_equal(x.models_dir, tmp_dir)
 
 
-def test_validate():
+def test_verify():
     pass
 
 
@@ -65,7 +65,7 @@ def test_leave_file_note():
 def test_move_file_new():
     x = ModelIngest(models_dir=tmp_dir)
     x.load(ingest_file)
-    x.validate()
+    x.verify()
     x.move()
     assert_true(os.path.isfile(os.path.join(tmp_dir, model_file)))
     assert_true(os.path.isfile(note_file))
@@ -75,7 +75,7 @@ def test_move_file_exists():
     make_test_files()
     x = ModelIngest(models_dir=tmp_dir)
     x.load(ingest_file)
-    x.validate()
+    x.verify()
     x.move()
     assert_true(os.path.isfile(os.path.join('tmp', model_file)))
     assert_true(os.path.isfile(note_file))

@@ -189,20 +189,20 @@ class IngestFile(object):
     """
     A file of model outputs or benchmark data to be ingested into PBS.
 
-    Attributes
-    ----------
-    name : str
-      The name of the file.
-    is_valid : bool
-      Set to True if the file is a valid model output or benchmark
-      data file.
-
     Parameters
     ----------
     filename : str or None, optional
       The name of the file (default is None).
 
+    Attributes
+    ----------
+    name : str
+      The name of the file.
+    is_verified : bool
+      Set to True if the file is a verified model output or benchmark
+      data file.
+
     """
     def __init__(self, filename=None):
         self.name = filename
-        self.is_valid = False
+        self.is_verified = False

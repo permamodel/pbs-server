@@ -59,12 +59,12 @@ class ModelIngest(object):
             self.ingest_files.append(IngestFile(f))
         self.make_public = cfg['make_public']
 
-    def validate(self):
+    def verify(self):
         """
-        Validate ingest files against the CMIP5 standard format.
+        Check whether ingest files use the CMIP5 standard format.
         """
         for f in self.ingest_files:
-            f.is_valid = True
+            f.is_verified = True
 
     def move(self):
         """
@@ -79,7 +79,7 @@ class ModelIngest(object):
 
         """
         for f in self.ingest_files:
-            if f.is_valid:
+            if f.is_verified:
                 msg = file_moved_msg.format(f.name, self.models_dir)
                 try:
                     shutil.move(f.name, self.models_dir)
