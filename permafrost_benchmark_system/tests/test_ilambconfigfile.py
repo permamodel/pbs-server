@@ -16,6 +16,17 @@ relationship = '"LeafAreaIndex/AVHRR"'
 default_title = 'Permafrost Benchmark System'
 
 
+def setup_module():
+    pass
+
+
+def teardown_module():
+    try:
+        os.remove(default_config_file)
+    except:
+        pass
+
+
 @raises(TypeError)
 def test_init_no_parameters():
     IlambConfigFile()
