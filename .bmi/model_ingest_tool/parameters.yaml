@@ -1,9 +1,24 @@
+ilamb_root:
+  description:
+    'Path to the ILAMB benchmark data and model output repository (ILAMB_ROOT)'
+  value:
+    type: string
+    default: /nas/data/ilamb
+
+dest_dir:
+  description:
+    Directory relative to ILAMB_ROOT where model outputs are stored
+  value:
+    type: string
+    default: MODELS
+
 ingest_files:
   description:
     A list of model output files to ingest
   value:
     type: list
     default: []
+
 make_public:
   description: Allow others to use these model outputs?
   value:
