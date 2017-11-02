@@ -23,11 +23,13 @@ class ModelIngestTool(object):
     ----------
     ingest_file : str, optional
       Path to the configuration file (default is None).
-    models_dir : str, optional
-      Path to the ILAMB MODELS directory (default is /nas/data/ilamb/MODELS).
 
     Attributes
     ----------
+    ilamb_root : str
+      Path to the ILAMB root directory.
+    dest_dir : str
+      Directory relative to ILAMB_ROOT where model outputs are stored.
     models_dir : str
       Path to the ILAMB MODELS directory.
     ingest_files : list
@@ -36,8 +38,10 @@ class ModelIngestTool(object):
       Set to True to allow others to see and use ingested files.
 
     """
-    def __init__(self, ingest_file=None, models_dir='/nas/data/ilamb/MODELS'):
-        self.models_dir = models_dir
+    def __init__(self, ingest_file=None):
+        self.ilamb_root = None
+        self.dest_dir = None
+        self.models_dir = None
         self.ingest_files = []
         self.make_public = True
         if ingest_file is not None:
@@ -55,6 +59,9 @@ class ModelIngestTool(object):
         """
         with open(ingest_file, 'r') as fp:
             cfg = yaml.safe_load(fp)
+        self.ilamb_root = cfg['ilamb_root']
+        self.dest_dir = cfg['dest_dir']
+        self.models_dir = os.path.join(self.ilamb_root, self.dest_dir)
         for f in cfg['ingest_files']:
             self.ingest_files.append(IngestFile(f))
         self.make_public = cfg['make_public']

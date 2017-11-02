@@ -2,7 +2,7 @@
 
 import os
 import shutil
-from nose.tools import nottest, assert_true, assert_equal
+from nose.tools import assert_true, assert_equal
 from permafrost_benchmark_system.ingest import ModelIngestTool
 from . import (ingest_file, model_file, note_file, tmp_dir,
                make_test_files)
@@ -27,12 +27,6 @@ def test_init():
     assert_true(isinstance(x, ModelIngestTool))
 
 
-def test_init_with_models_dir():
-    x = ModelIngestTool(models_dir=tmp_dir)
-    assert_true(isinstance(x, ModelIngestTool))
-    assert_equal(x.models_dir, tmp_dir)
-
-
 def test_load():
     x = ModelIngestTool()
     x.load(ingest_file)
@@ -45,10 +39,10 @@ def test_init_with_ingest_file():
     assert_equal(x.ingest_files[0].name, model_file)
 
 
-def test_set_models_dir():
+def test_set_dest_dir():
     x = ModelIngestTool()
-    x.models_dir = tmp_dir
-    assert_equal(x.models_dir, tmp_dir)
+    x.dest_dir = tmp_dir
+    assert_equal(x.dest_dir, tmp_dir)
 
 
 def test_verify():
@@ -63,7 +57,7 @@ def test_leave_file_note():
 
 
 def test_move_file_new():
-    x = ModelIngestTool(models_dir=tmp_dir)
+    x = ModelIngestTool()
     x.load(ingest_file)
     x.verify()
     x.move()
@@ -73,7 +67,7 @@ def test_move_file_new():
 
 def test_move_file_exists():
     make_test_files()
-    x = ModelIngestTool(models_dir=tmp_dir)
+    x = ModelIngestTool()
     x.load(ingest_file)
     x.verify()
     x.move()
