@@ -2,8 +2,7 @@
 
 import os
 import shutil
-import yaml
-from nose.tools import nottest, assert_true, assert_equal, assert_is_none
+from nose.tools import raises, assert_true, assert_equal, assert_is_none
 from permafrost_benchmark_system.bmi_ingest import BmiModelIngestTool
 from . import (ingest_file, model_file, note_file, tmp_dir,
                make_test_files)
@@ -37,6 +36,12 @@ def test_initialize():
     x = BmiModelIngestTool()
     x.initialize(ingest_file)
     assert_equal(x._tool.ingest_files[0].name, model_file)
+
+
+@raises(TypeError)
+def test_initialize_no_args():
+    x = BmiModelIngestTool()
+    x.initialize()
 
 
 def test_update():

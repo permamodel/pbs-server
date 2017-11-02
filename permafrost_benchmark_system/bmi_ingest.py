@@ -1,7 +1,7 @@
 """Define the BMI for the PBS ingest tools."""
 
 from basic_modeling_interface import Bmi
-from .ingest import ModelIngest, BenchmarkIngest
+from .ingest import ModelIngestTool, BenchmarkIngestTool
 
 
 class BmiIngestToolBase(Bmi):
@@ -23,7 +23,7 @@ class BmiIngestToolBase(Bmi):
     def update(self):
         if self.get_current_time() < self.get_end_time():
             self._time = self.get_end_time()
-            self._tool.validate()
+            self._tool.verify()
             self._tool.move()
 
     def update_until(self, time):
@@ -60,7 +60,7 @@ class BmiModelIngestTool(BmiIngestToolBase):
 
     def __init__(self):
         super(BmiModelIngestTool, self).__init__()
-        self._tool = ModelIngest()
+        self._tool = ModelIngestTool()
 
 
 class BmiBenchmarkIngestTool(BmiIngestToolBase):
@@ -69,4 +69,4 @@ class BmiBenchmarkIngestTool(BmiIngestToolBase):
 
     def __init__(self):
         super(BmiBenchmarkIngestTool, self).__init__()
-        self._tool = BenchmarkIngest()
+        self._tool = BenchmarkIngestTool()

@@ -1,5 +1,6 @@
 """Unit tests for the permafrost_benchmark_system package."""
 
+import os
 import yaml
 
 
@@ -15,6 +16,11 @@ def make_test_files():
     """
     with open(model_file, 'w') as fp:
         fp.write('This is a test model output file.\n')
-    cfg = {'ingest_files': [model_file], 'make_public': True}
+
+    cfg = dict()
+    cfg['ilamb_root'] = os.getcwd()
+    cfg['dest_dir'] = tmp_dir
+    cfg['ingest_files'] = [model_file]
+    cfg['make_public'] = True
     with open(ingest_file, 'w') as fp:
         yaml.safe_dump(cfg, fp, default_flow_style=False)
