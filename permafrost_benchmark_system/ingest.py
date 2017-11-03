@@ -7,14 +7,14 @@ from .file import IngestFile
 from .verify import VerificationTool, VerificationError
 
 
-file_exists_msg = '''# File Exists\n
+file_exists = '''# File Exists\n
 The file `{1}/{0}` already exists in the PBS data store.
 The file has not been updated.
 '''
-file_moved_msg = '''# File Moved\n
+file_moved = '''# File Moved\n
 The file `{}` has been moved to `{}` in the PBS data store.
 '''
-file_not_verified_msg = '''# File Verification Error\n
+file_not_verified = '''# File Verification Error\n
 The file `{}` cannot be ingested into the PBS data store.
 Error message:\n
 {}
@@ -81,7 +81,7 @@ class ModelIngestTool(object):
             try:
                 v.verify()
             except VerificationError as e:
-                msg = file_not_verified_msg.format(f.name, e.msg)
+                msg = file_not_verified.format(f.name, e.msg)
                 self._leave_file_note(f.name, msg)
             else:
                 f.data = v.model_name
@@ -101,11 +101,11 @@ class ModelIngestTool(object):
         """
         for f in self.ingest_files:
             if f.is_verified:
-                msg = file_moved_msg.format(f.name, self.models_dir)
+                msg = file_moved.format(f.name, self.models_dir)
                 try:
                     shutil.move(f.name, self.models_dir)
                 except:
-                    msg = file_exists_msg.format(f.name, self.models_dir)
+                    msg = file_exists.format(f.name, self.models_dir)
                     if os.path.exists(f.name):
                         os.remove(f.name)
                 finally:
