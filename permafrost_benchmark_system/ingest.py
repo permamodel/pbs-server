@@ -4,6 +4,7 @@ import os
 import shutil
 import yaml
 from .file import IngestFile
+from .verify import VerificationTool, VerificationError
 
 
 file_exists_msg = '''# File Exists\n
@@ -12,6 +13,11 @@ The file has not been updated.
 '''
 file_moved_msg = '''# File Moved\n
 The file `{}` has been moved to `{}` in the PBS data store.
+'''
+file_not_verified_msg = '''# File Verification Error\n
+The file `{}` cannot be ingested into the PBS data store.
+Error message:\n
+{}
 '''
 
 
@@ -71,7 +77,15 @@ class ModelIngestTool(object):
         Check whether ingest files use the CMIP5 standard format.
         """
         for f in self.ingest_files:
-            f.is_verified = True
+            v = VerificationTool(f)
+            try:
+                v.verify()
+            except VerificationError as e:
+                msg = file_not_verified_msg.format(f.name, e.msg)
+                self._leave_file_note(f.name, msg)
+            else:
+                f.data = v.model_name
+                f.is_verified = True
 
     def move(self):
         """
