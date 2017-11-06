@@ -79,6 +79,8 @@ class ModelIngestTool(object):
             except VerificationError as e:
                 msg = file_not_verified.format(f.name, e.msg)
                 self._leave_file_note(f.name, msg)
+                if os.path.exists(f.name):
+                    os.remove(f.name)
             else:
                 f.data = v.model_name
                 f.is_verified = True
