@@ -2,7 +2,7 @@
 
 import os
 import shutil
-from nose.tools import assert_true, assert_equal
+from nose.tools import assert_true, assert_false, assert_equal
 from permafrost_benchmark_system.ingest import ModelIngestTool
 from . import (ingest_file, model_file, note_file, tmp_dir,
                make_test_files)
@@ -46,7 +46,11 @@ def test_set_dest_dir():
 
 
 def test_verify():
-    pass
+    x = ModelIngestTool()
+    x.load(ingest_file)
+    x.verify()
+    assert_false(os.path.isfile(model_file))
+    assert_true(os.path.isfile(note_file))
 
 
 def test_leave_file_note():
@@ -57,6 +61,7 @@ def test_leave_file_note():
 
 
 def test_move_file_new():
+    make_test_files()
     x = ModelIngestTool()
     x.load(ingest_file)
     # x.verify()  # verify will clobber my simple test file
