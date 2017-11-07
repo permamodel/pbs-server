@@ -4,7 +4,7 @@ import os
 import shutil
 from nose.tools import raises, assert_true, assert_equal, assert_is_none
 from permafrost_benchmark_system.bmi_ingest import BmiModelIngestTool
-from . import (ingest_file, model_file, note_file, tmp_dir,
+from . import (ingest_file, model_file, log_file, tmp_dir,
                make_test_files)
 
 
@@ -15,7 +15,7 @@ def setup_module():
 
 def teardown_module():
     shutil.rmtree(tmp_dir)
-    for f in [ingest_file, model_file, note_file]:
+    for f in [ingest_file, model_file, log_file]:
         try:
             os.remove(f)
         except:
@@ -48,7 +48,7 @@ def test_update():
     x = BmiModelIngestTool()
     x.initialize(ingest_file)
     x.update()
-    assert_true(os.path.isfile(note_file))
+    assert_true(os.path.isfile(log_file))
 
 
 def test_update_until():
@@ -56,7 +56,7 @@ def test_update_until():
     x.initialize(ingest_file)
     end_time = 5.0
     x.update_until(end_time)
-    assert_true(os.path.isfile(note_file))
+    assert_true(os.path.isfile(log_file))
 
 
 def test_finalize():
