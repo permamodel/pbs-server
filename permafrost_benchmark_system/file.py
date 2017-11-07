@@ -201,8 +201,12 @@ class IngestFile(object):
     is_verified : bool
       Set to True if the file is a verified model output or benchmark
       data file.
+    data : str
+      The name of the model (for a model output file) or of the
+      variable in the file (for a benchmark dataset).
 
     """
     def __init__(self, filename=None):
         self.name = filename
         self.is_verified = False
+        self.data = None
