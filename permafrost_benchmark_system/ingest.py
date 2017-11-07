@@ -3,18 +3,18 @@
 import os
 import shutil
 import yaml
-from .file import IngestFile
+from .file import IngestFile, Logger
 from .verify import VerificationTool, VerificationError
 
 
-file_exists = '''# File Exists\n
+file_exists = '''## File Exists\n
 The file `{1}/{0}` already exists in the PBS data store.
 The file has not been updated.
 '''
-file_moved = '''# File Moved\n
+file_moved = '''## File Moved\n
 The file `{}` has been moved to `{}` in the PBS data store.
 '''
-file_not_verified = '''# File Verification Error\n
+file_not_verified = '''## File Verification Error\n
 The file `{}` cannot be ingested into the PBS data store.
 Error message:\n
 {}
@@ -47,6 +47,7 @@ class ModelIngestTool(object):
         self.dest_dir = None
         self.ingest_files = []
         self.make_public = True
+        self.log = Logger(title='Model Ingest Tool Summary')
         if ingest_file is not None:
             self.load(ingest_file)
 
@@ -78,7 +79,7 @@ class ModelIngestTool(object):
                 v.verify()
             except VerificationError as e:
                 msg = file_not_verified.format(f.name, e.msg)
-                self._leave_file_note(f.name, msg)
+                self.log.add(msg)
                 if os.path.exists(f.name):
                     os.remove(f.name)
             else:
@@ -108,11 +109,7 @@ class ModelIngestTool(object):
                     if os.path.exists(f.name):
                         os.remove(f.name)
                 finally:
-                    self._leave_file_note(f.name, msg)
-
-    def _leave_file_note(self, filename, mesg):
-        with open(filename + '.txt', 'w') as fp:
-            fp.write(mesg)
+                    self.log.add(msg)
 
 
 class BenchmarkIngestTool(object):

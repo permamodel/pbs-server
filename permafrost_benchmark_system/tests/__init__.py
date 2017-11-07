@@ -6,7 +6,7 @@ import yaml
 
 ingest_file = 'test_ingest.yaml'
 model_file = 'test_model.txt'
-note_file = model_file + '.txt'
+log_file = 'index.html'
 tmp_dir = 'tmp'
 
 

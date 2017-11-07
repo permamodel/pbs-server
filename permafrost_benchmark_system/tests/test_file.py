@@ -4,8 +4,9 @@ import os
 from nose.tools import raises, assert_true, assert_equal
 from permafrost_benchmark_system.file import (get_region_labels_txt,
                                               get_region_labels_ncdf,
-                                              IngestFile)
+                                              IngestFile, Logger)
 from permafrost_benchmark_system import data_directory
+from . import log_file
 
 
 regions_file_txt = 'tropics.txt'
@@ -14,6 +15,18 @@ labels_txt = ['tropics', 'afritrop']
 regions_file_nc = 'basins_0.5x0.5.nc'
 regions_file_nc_path = os.path.join(data_directory, regions_file_nc)
 labels_nc = ['amazon', 'ob', 'lena']
+
+
+def setup_module():
+    pass
+
+
+def teardown_module():
+    for f in [log_file]:
+        try:
+            os.remove(f)
+        except:
+            pass
 
 
 @raises(IOError)
@@ -60,3 +73,23 @@ def test_ingestfile_set_name():
     x = IngestFile()
     x.name = regions_file_nc
     assert_true(x.name, regions_file_nc)
+
+
+def test_logger_init():
+    x = Logger()
+    assert_true(isinstance(x, Logger))
+    assert_true(os.path.isfile(log_file))
+
+
+def test_logger_add():
+    x = Logger()
+    len0 = len(x.data)
+    x.add('foo')
+    assert_true(len(x.data) > len0)
+    assert_true(os.path.isfile(log_file))
+
+
+def test_logger_write():
+    x = Logger()
+    x.write()
+    assert_true(os.path.isfile(log_file))
