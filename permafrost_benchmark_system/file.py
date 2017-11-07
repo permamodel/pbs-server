@@ -244,6 +244,7 @@ class Logger(object):
     """
     def __init__(self, title='Summary'):
         self.data = markdown.markdown('# {}'.format(title))
+        self.write()
 
     def add(self, message):
         """
@@ -256,6 +257,7 @@ class Logger(object):
 
         """
         self.data += markdown.markdown(message)
+        self.write()
 
     def write(self):
         """
