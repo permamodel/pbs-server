@@ -101,15 +101,39 @@ class ModelIngestTool(object):
         models_dir = os.path.join(self.ilamb_root, self.dest_dir)
         for f in self.ingest_files:
             if f.is_verified:
-                msg = file_moved.format(f.name, models_dir)
+                target_dir = os.path.join(models_dir, f.data)
+                if not os.path.isdir(target_dir):
+                    os.mkdir(target_dir)
+                msg = file_moved.format(f.name, target_dir)
                 try:
-                    shutil.move(f.name, models_dir)
+                    shutil.move(f.name, target_dir)
+                    self.symlink(f)
                 except:
-                    msg = file_exists.format(f.name, models_dir)
+                    msg = file_exists.format(f.name, target_dir)
                     if os.path.exists(f.name):
                         os.remove(f.name)
                 finally:
                     self.log.add(msg)
+
+    def symlink(self, ingest_file):
+        """
+        Symlink a file into the PBS project directory.
+
+        Parameters
+        ----------
+        ingest_file : IngestFile
+          File for which symlink is crated.
+
+        """
+        src = os.path.join(self.ilamb_root,
+                           self.dest_dir,
+                           ingest_file.data,
+                           ingest_file.name)
+        dst = os.path.join(self.ilamb_root,
+                           'MODELS-by-project',
+                           'PBS',
+                           ingest_file.name)
+        os.symlink(src, dst)
 
 
 class BenchmarkIngestTool(object):
