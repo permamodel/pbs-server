@@ -104,7 +104,7 @@ class ModelIngestTool(object):
             if f.is_verified:
                 target_dir = os.path.join(models_dir, f.data)
                 if not os.path.isdir(target_dir):
-                    os.mkdir(target_dir)
+                    os.makedirs(target_dir)
                 msg = file_moved.format(f.name, target_dir)
                 try:
                     shutil.move(f.name, target_dir)
@@ -136,7 +136,7 @@ class ModelIngestTool(object):
                            self.link_dir,
                            self.study_name)
         if not os.path.isdir(dst_dir):
-            os.mkdir(dst_dir)
+            os.makedirs(dst_dir)
         dst = os.path.join(dst_dir, ingest_file.name)
         os.symlink(src, dst)
 
