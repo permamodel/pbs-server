@@ -36,6 +36,10 @@ class ModelIngestTool(object):
       Path to the ILAMB root directory.
     dest_dir : str
       Directory relative to ILAMB_ROOT where model outputs are stored.
+    link_dir : str, optional
+      Directory relative to ILAMB_ROOT where model outputs are linked.
+    study_name : str, optional
+      Name of modeling project or study; e.g., CMIP5.
     ingest_files : list
       List of files to ingest.
     make_public : bool
@@ -43,8 +47,10 @@ class ModelIngestTool(object):
 
     """
     def __init__(self, ingest_file=None):
-        self.ilamb_root = None
-        self.dest_dir = None
+        self.ilamb_root = ''
+        self.dest_dir = ''
+        self.link_dir = ''
+        self.study_name = ''
         self.ingest_files = []
         self.make_public = True
         self.log = Logger(title='Model Ingest Tool Summary')
@@ -65,6 +71,8 @@ class ModelIngestTool(object):
             cfg = yaml.safe_load(fp)
         self.ilamb_root = cfg['ilamb_root']
         self.dest_dir = cfg['dest_dir']
+        self.link_dir = cfg['link_dir']
+        self.study_name = cfg['study_name']
         for f in cfg['ingest_files']:
             self.ingest_files.append(IngestFile(f))
         self.make_public = cfg['make_public']
@@ -90,26 +98,47 @@ class ModelIngestTool(object):
         """
         Move ingest files to the ILAMB MODELS directory.
 
-        Notes
-        -----
-        A file that is moved is replaced with a text file listing the
-        new location of the file. If the file exists in the target
-        location, the file is replaced with a text file stating that
-        the file was not moved.
-
         """
         models_dir = os.path.join(self.ilamb_root, self.dest_dir)
         for f in self.ingest_files:
             if f.is_verified:
-                msg = file_moved.format(f.name, models_dir)
+                target_dir = os.path.join(models_dir, f.data)
+                if not os.path.isdir(target_dir):
+                    os.makedirs(target_dir)
+                msg = file_moved.format(f.name, target_dir)
                 try:
-                    shutil.move(f.name, models_dir)
-                except:
-                    msg = file_exists.format(f.name, models_dir)
+                    shutil.move(f.name, target_dir)
+                except shutil.Error:
+                    msg = file_exists.format(f.name, target_dir)
                     if os.path.exists(f.name):
                         os.remove(f.name)
+                else:
+                    if len(self.link_dir) > 0:
+                        self.symlink(f)
                 finally:
                     self.log.add(msg)
+
+    def symlink(self, ingest_file):
+        """
+        Symlink a file into the PBS project directory.
+
+        Parameters
+        ----------
+        ingest_file : IngestFile
+          File for which symlink is crated.
+
+        """
+        src = os.path.join(self.ilamb_root,
+                           self.dest_dir,
+                           ingest_file.data,
+                           ingest_file.name)
+        dst_dir = os.path.join(self.ilamb_root,
+                           self.link_dir,
+                           self.study_name)
+        if not os.path.isdir(dst_dir):
+            os.makedirs(dst_dir)
+        dst = os.path.join(dst_dir, ingest_file.name)
+        os.symlink(src, dst)
 
 
 class BenchmarkIngestTool(object):
