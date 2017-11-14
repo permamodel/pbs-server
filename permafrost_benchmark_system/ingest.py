@@ -108,12 +108,13 @@ class ModelIngestTool(object):
                 msg = file_moved.format(f.name, target_dir)
                 try:
                     shutil.move(f.name, target_dir)
-                    if len(self.link_dir) > 0:
-                        self.symlink(f)
-                except:
+                except shutil.Error:
                     msg = file_exists.format(f.name, target_dir)
                     if os.path.exists(f.name):
                         os.remove(f.name)
+                else:
+                    if len(self.link_dir) > 0:
+                        self.symlink(f)
                 finally:
                     self.log.add(msg)
 
