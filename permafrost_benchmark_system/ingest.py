@@ -36,6 +36,10 @@ class ModelIngestTool(object):
       Path to the ILAMB root directory.
     dest_dir : str
       Directory relative to ILAMB_ROOT where model outputs are stored.
+    link_dir : str, optional
+      Directory relative to ILAMB_ROOT where model outputs are linked.
+    study_name : str, optional
+      Name of modeling project or study; e.g., CMIP5.
     ingest_files : list
       List of files to ingest.
     make_public : bool
@@ -45,6 +49,8 @@ class ModelIngestTool(object):
     def __init__(self, ingest_file=None):
         self.ilamb_root = None
         self.dest_dir = None
+        self.link_dir = ''
+        self.study_name = ''
         self.ingest_files = []
         self.make_public = True
         self.log = Logger(title='Model Ingest Tool Summary')
@@ -65,6 +71,8 @@ class ModelIngestTool(object):
             cfg = yaml.safe_load(fp)
         self.ilamb_root = cfg['ilamb_root']
         self.dest_dir = cfg['dest_dir']
+        self.link_dir = cfg['link_dir']
+        self.study_name = cfg['study_name']
         for f in cfg['ingest_files']:
             self.ingest_files.append(IngestFile(f))
         self.make_public = cfg['make_public']
@@ -107,7 +115,8 @@ class ModelIngestTool(object):
                 msg = file_moved.format(f.name, target_dir)
                 try:
                     shutil.move(f.name, target_dir)
-                    self.symlink(f)
+                    if len(self.link_dir) > 0:
+                        self.symlink(f)
                 except:
                     msg = file_exists.format(f.name, target_dir)
                     if os.path.exists(f.name):
@@ -130,8 +139,8 @@ class ModelIngestTool(object):
                            ingest_file.data,
                            ingest_file.name)
         dst = os.path.join(self.ilamb_root,
-                           'MODELS-by-project',
-                           'PBS',
+                           self.link_dir,
+                           self.study_name,
                            ingest_file.name)
         os.symlink(src, dst)
 
