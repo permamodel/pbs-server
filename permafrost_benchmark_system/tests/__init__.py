@@ -8,6 +8,8 @@ ingest_file = 'test_ingest.yaml'
 model_file = 'test_model.txt'
 log_file = 'index.html'
 tmp_dir = 'tmp'
+link_dir = 'link'
+study_name = 'PBS'
 
 
 def make_test_files():
@@ -20,6 +22,8 @@ def make_test_files():
     cfg = dict()
     cfg['ilamb_root'] = os.getcwd()
     cfg['dest_dir'] = tmp_dir
+    cfg['link_dir'] = link_dir
+    cfg['study_name'] = study_name
     cfg['ingest_files'] = [model_file]
     cfg['make_public'] = True
     with open(ingest_file, 'w') as fp:
