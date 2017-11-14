@@ -47,8 +47,8 @@ class ModelIngestTool(object):
 
     """
     def __init__(self, ingest_file=None):
-        self.ilamb_root = None
-        self.dest_dir = None
+        self.ilamb_root = ''
+        self.dest_dir = ''
         self.link_dir = ''
         self.study_name = ''
         self.ingest_files = []
