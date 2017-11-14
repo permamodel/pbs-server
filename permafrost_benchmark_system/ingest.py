@@ -98,13 +98,6 @@ class ModelIngestTool(object):
         """
         Move ingest files to the ILAMB MODELS directory.
 
-        Notes
-        -----
-        A file that is moved is replaced with a text file listing the
-        new location of the file. If the file exists in the target
-        location, the file is replaced with a text file stating that
-        the file was not moved.
-
         """
         models_dir = os.path.join(self.ilamb_root, self.dest_dir)
         for f in self.ingest_files:
