@@ -132,10 +132,12 @@ class ModelIngestTool(object):
                            self.dest_dir,
                            ingest_file.data,
                            ingest_file.name)
-        dst = os.path.join(self.ilamb_root,
+        dst_dir = os.path.join(self.ilamb_root,
                            self.link_dir,
-                           self.study_name,
-                           ingest_file.name)
+                           self.study_name)
+        if not os.path.isdir(dst_dir):
+            os.mkdir(dst_dir)
+        dst = os.path.join(dst_dir, ingest_file.name)
         os.symlink(src, dst)
 
 
