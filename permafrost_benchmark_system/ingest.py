@@ -17,7 +17,7 @@ The file `{}` has been moved to `{}` in the PBS data store.
 file_not_verified = '''## File Verification Error\n
 The file `{}` cannot be ingested into the PBS data store.
 Error message:\n
-{}
+    {}
 '''
 
 
