@@ -2,9 +2,9 @@
 
 import os
 from nose.tools import raises, assert_true, assert_equal
-from permafrost_benchmark_system.file import (get_region_labels_txt,
-                                              get_region_labels_ncdf)
-from permafrost_benchmark_system import data_directory
+from pbs_server.file import (get_region_labels_txt,
+                             get_region_labels_ncdf)
+from pbs_server import data_directory
 
 
 regions_file_txt = 'tropics.txt'

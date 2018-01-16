@@ -1,1 +1,1 @@
-"""Unit tests for the permafrost_benchmark_system package."""
+"""Unit tests for the pbs-server package."""
