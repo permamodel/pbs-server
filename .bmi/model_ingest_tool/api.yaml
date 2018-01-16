@@ -1,6 +1,0 @@
-name: ModelIngestTool
-language: python
-
-package: permafrost_benchmark_system.bmi_ingest
-class: BmiModelIngestTool
-initialize_args: ingest.yaml

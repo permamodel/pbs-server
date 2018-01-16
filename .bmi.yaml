@@ -1,6 +1,0 @@
-bmi_paths:
-  - .bmi/model_ingest_tool
-  - .bmi/benchmark_ingest_tool
-
-build:
-  - python setup.py install
