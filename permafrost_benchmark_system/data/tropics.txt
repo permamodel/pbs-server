@@ -1,0 +1,2 @@
+tropics,Tropics,-23.5,23.5,-180,180
+afritrop,Tropical Africa,-23.5,23.5,-30,60
