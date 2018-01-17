@@ -8,4 +8,3 @@ a collaboration between researchers at
 NSIDC, WHOI, LANL, and CSDMS,
 for conducting benchmarking studies
 of permafrost models.
-
