@@ -4,8 +4,8 @@ import filecmp
 import numpy as np
 from nose.tools import raises, assert_true, assert_false, assert_equal
 from ConfigParser import SafeConfigParser
-from permafrost_benchmark_system.file import IlambConfigFile
-from permafrost_benchmark_system import data_directory
+from pbs_server.file import IlambConfigFile
+from pbs_server import data_directory
 
 
 default_config_file = 'ilamb.cfg'
