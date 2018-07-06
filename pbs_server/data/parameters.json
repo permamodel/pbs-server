@@ -1,0 +1,1386 @@
+[
+    {
+        "key": "separator", 
+        "name": "General", 
+        "value": {
+            "default": "", 
+            "type": "string"
+        }, 
+        "description": "General"
+    }, 
+    {
+        "name": "The name of the current benchmarking study", 
+        "global": false, 
+        "value": {
+            "default": "ILAMB", 
+            "type": "string"
+        }, 
+        "visible": true, 
+        "key": "simulation_name", 
+        "description": "The name of the current benchmarking studyfoo"
+    }, 
+    {
+        "key": "separator", 
+        "name": "Models", 
+        "value": {
+            "default": "", 
+            "type": "string"
+        }, 
+        "description": "Models"
+    }, 
+    {
+        "name": "Select one or more <a href='http://cmip-pcmdi.llnl.gov/cmip5/index.html'>CMIP5</a>-compatible models for benchmarking with the ILAMB model evaluation software. Optionally, compute a mean model from the selected models and include it in the analysis.", 
+        "global": false, 
+        "value": {
+            "default": "", 
+            "type": "overview"
+        }, 
+        "visible": true, 
+        "key": "_overview_models", 
+        "description": "Select one or more <a href='http://cmip-pcmdi.llnl.gov/cmip5/index.html'>CMIP5</a>-compatible models for benchmarking with the ILAMB model evaluation software. Optionally, compute a mean model from the selected models and include it in the analysis."
+    }, 
+    {
+        "name": "Path to the ILAMB benchmark data and model output repository (ILAMB_ROOT)", 
+        "global": false, 
+        "value": {
+            "default": "/nas/data/ilamb", 
+            "type": "string"
+        }, 
+        "visible": true, 
+        "key": "ilamb_root", 
+        "description": "Path to the ILAMB benchmark data and model output repository (ILAMB_ROOT)"
+    }, 
+    {
+        "name": "Directory relative to ILAMB_ROOT containing model outputs", 
+        "global": false, 
+        "value": {
+            "default": "MODELS", 
+            "type": "string"
+        }, 
+        "visible": true, 
+        "key": "model_root", 
+        "description": "Directory relative to ILAMB_ROOT containing model outputs"
+    }, 
+    {
+        "group": {
+            "name": "cmip5_models_group", 
+            "members": 14, 
+            "leader": true
+        }, 
+        "name": "CMIP5 model outputs (click to expand)", 
+        "global": false, 
+        "value": {
+            "default": "", 
+            "type": "subheading"
+        }, 
+        "visible": true, 
+        "key": "_cmip5_models", 
+        "description": "CMIP5 model outputs (click to expand)"
+    }, 
+    {
+        "group": {
+            "name": "cmip5_models_group", 
+            "members": 14, 
+            "leader": false
+        }, 
+        "name": "BCC-CSM1-1-M", 
+        "global": false, 
+        "value": {
+            "default": "Off", 
+            "type": "choice", 
+            "choices": [
+                "On", 
+                "Off"
+            ]
+        }, 
+        "visible": true, 
+        "key": "_model_bcc-csm1-1-m", 
+        "description": "BCC-CSM1-1-M"
+    }, 
+    {
+        "group": {
+            "name": "cmip5_models_group", 
+            "members": 14, 
+            "leader": false
+        }, 
+        "name": "BNU-ESM", 
+        "global": false, 
+        "value": {
+            "default": "Off", 
+            "type": "choice", 
+            "choices": [
+                "On", 
+                "Off"
+            ]
+        }, 
+        "visible": true, 
+        "key": "_model_BNU-ESM", 
+        "description": "BNU-ESM"
+    }, 
+    {
+        "group": {
+            "name": "cmip5_models_group", 
+            "members": 14, 
+            "leader": false
+        }, 
+        "name": "CanESM2", 
+        "global": false, 
+        "value": {
+            "default": "Off", 
+            "type": "choice", 
+            "choices": [
+                "On", 
+                "Off"
+            ]
+        }, 
+        "visible": true, 
+        "key": "_model_CanESM2", 
+        "description": "CanESM2"
+    }, 
+    {
+        "group": {
+            "name": "cmip5_models_group", 
+            "members": 14, 
+            "leader": false
+        }, 
+        "name": "CESM1-BGC", 
+        "global": false, 
+        "value": {
+            "default": "Off", 
+            "type": "choice", 
+            "choices": [
+                "On", 
+                "Off"
+            ]
+        }, 
+        "visible": true, 
+        "key": "_model_CESM1-BGC", 
+        "description": "CESM1-BGC"
+    }, 
+    {
+        "group": {
+            "name": "cmip5_models_group", 
+            "members": 14, 
+            "leader": false
+        }, 
+        "name": "CESM1.2-BGC", 
+        "global": false, 
+        "value": {
+            "default": "Off", 
+            "type": "choice", 
+            "choices": [
+                "On", 
+                "Off"
+            ]
+        }, 
+        "visible": true, 
+        "key": "_model_cesm1_2bgc", 
+        "description": "CESM1.2-BGC"
+    }, 
+    {
+        "group": {
+            "name": "cmip5_models_group", 
+            "members": 14, 
+            "leader": false
+        }, 
+        "name": "GFDL-ESM2G", 
+        "global": false, 
+        "value": {
+            "default": "Off", 
+            "type": "choice", 
+            "choices": [
+                "On", 
+                "Off"
+            ]
+        }, 
+        "visible": true, 
+        "key": "_model_GFDL-ESM2G", 
+        "description": "GFDL-ESM2G"
+    }, 
+    {
+        "group": {
+            "name": "cmip5_models_group", 
+            "members": 14, 
+            "leader": false
+        }, 
+        "name": "HadGEM2-ES", 
+        "global": false, 
+        "value": {
+            "default": "Off", 
+            "type": "choice", 
+            "choices": [
+                "On", 
+                "Off"
+            ]
+        }, 
+        "visible": true, 
+        "key": "_model_HadGEM2-ES", 
+        "description": "HadGEM2-ES"
+    }, 
+    {
+        "group": {
+            "name": "cmip5_models_group", 
+            "members": 14, 
+            "leader": false
+        }, 
+        "name": "INM-CM4", 
+        "global": false, 
+        "value": {
+            "default": "Off", 
+            "type": "choice", 
+            "choices": [
+                "On", 
+                "Off"
+            ]
+        }, 
+        "visible": true, 
+        "key": "_model_inmcm4", 
+        "description": "INM-CM4"
+    }, 
+    {
+        "group": {
+            "name": "cmip5_models_group", 
+            "members": 14, 
+            "leader": false
+        }, 
+        "name": "IPSL-CM5A-LR", 
+        "global": false, 
+        "value": {
+            "default": "Off", 
+            "type": "choice", 
+            "choices": [
+                "On", 
+                "Off"
+            ]
+        }, 
+        "visible": true, 
+        "key": "_model_IPSL-CM5A-LR", 
+        "description": "IPSL-CM5A-LR"
+    }, 
+    {
+        "group": {
+            "name": "cmip5_models_group", 
+            "members": 14, 
+            "leader": false
+        }, 
+        "name": "MIROC-ESM", 
+        "global": false, 
+        "value": {
+            "default": "Off", 
+            "type": "choice", 
+            "choices": [
+                "On", 
+                "Off"
+            ]
+        }, 
+        "visible": true, 
+        "key": "_model_MIROC-ESM", 
+        "description": "MIROC-ESM"
+    }, 
+    {
+        "group": {
+            "name": "cmip5_models_group", 
+            "members": 14, 
+            "leader": false
+        }, 
+        "name": "MPI-ESM-LR", 
+        "global": false, 
+        "value": {
+            "default": "Off", 
+            "type": "choice", 
+            "choices": [
+                "On", 
+                "Off"
+            ]
+        }, 
+        "visible": true, 
+        "key": "_model_MPI-ESM-LR", 
+        "description": "MPI-ESM-LR"
+    }, 
+    {
+        "group": {
+            "name": "cmip5_models_group", 
+            "members": 14, 
+            "leader": false
+        }, 
+        "name": "MRI-ESM1", 
+        "global": false, 
+        "value": {
+            "default": "Off", 
+            "type": "choice", 
+            "choices": [
+                "On", 
+                "Off"
+            ]
+        }, 
+        "visible": true, 
+        "key": "_model_MRI-ESM1", 
+        "description": "MRI-ESM1"
+    }, 
+    {
+        "group": {
+            "name": "cmip5_models_group", 
+            "members": 14, 
+            "leader": false
+        }, 
+        "name": "NorESM1-ME", 
+        "global": false, 
+        "value": {
+            "default": "Off", 
+            "type": "choice", 
+            "choices": [
+                "On", 
+                "Off"
+            ]
+        }, 
+        "visible": true, 
+        "key": "_model_NorESM1-ME", 
+        "description": "NorESM1-ME"
+    }, 
+    {
+        "group": {
+            "name": "mstmip_models_group", 
+            "members": 16, 
+            "leader": true
+        }, 
+        "name": "MsTMIP model outputs (click to expand)", 
+        "global": false, 
+        "value": {
+            "default": "", 
+            "type": "subheading"
+        }, 
+        "visible": true, 
+        "key": "_mstmip_models", 
+        "description": "MsTMIP model outputs (click to expand)"
+    }, 
+    {
+        "group": {
+            "name": "mstmip_models_group", 
+            "members": 16, 
+            "leader": false
+        }, 
+        "name": "BIOME-BGC", 
+        "global": false, 
+        "value": {
+            "default": "Off", 
+            "type": "choice", 
+            "choices": [
+                "On", 
+                "Off"
+            ]
+        }, 
+        "visible": true, 
+        "key": "_model_BIOME-BGC", 
+        "description": "BIOME-BGC"
+    }, 
+    {
+        "group": {
+            "name": "mstmip_models_group", 
+            "members": 16, 
+            "leader": false
+        }, 
+        "name": "CLASS-CTEM-N", 
+        "global": false, 
+        "value": {
+            "default": "Off", 
+            "type": "choice", 
+            "choices": [
+                "On", 
+                "Off"
+            ]
+        }, 
+        "visible": true, 
+        "key": "_model_CLASS-CTEM-N", 
+        "description": "CLASS-CTEM-N"
+    }, 
+    {
+        "group": {
+            "name": "mstmip_models_group", 
+            "members": 16, 
+            "leader": false
+        }, 
+        "name": "CLM4", 
+        "global": false, 
+        "value": {
+            "default": "Off", 
+            "type": "choice", 
+            "choices": [
+                "On", 
+                "Off"
+            ]
+        }, 
+        "visible": true, 
+        "key": "_model_CLM4", 
+        "description": "CLM4"
+    }, 
+    {
+        "group": {
+            "name": "mstmip_models_group", 
+            "members": 16, 
+            "leader": false
+        }, 
+        "name": "CLM4VIC", 
+        "global": false, 
+        "value": {
+            "default": "Off", 
+            "type": "choice", 
+            "choices": [
+                "On", 
+                "Off"
+            ]
+        }, 
+        "visible": true, 
+        "key": "_model_CLM4VIC", 
+        "description": "CLM4VIC"
+    }, 
+    {
+        "group": {
+            "name": "mstmip_models_group", 
+            "members": 16, 
+            "leader": false
+        }, 
+        "name": "DLEM", 
+        "global": false, 
+        "value": {
+            "default": "Off", 
+            "type": "choice", 
+            "choices": [
+                "On", 
+                "Off"
+            ]
+        }, 
+        "visible": true, 
+        "key": "_model_DLEM", 
+        "description": "DLEM"
+    }, 
+    {
+        "group": {
+            "name": "mstmip_models_group", 
+            "members": 16, 
+            "leader": false
+        }, 
+        "name": "GTEC", 
+        "global": false, 
+        "value": {
+            "default": "Off", 
+            "type": "choice", 
+            "choices": [
+                "On", 
+                "Off"
+            ]
+        }, 
+        "visible": true, 
+        "key": "_model_GTEC", 
+        "description": "GTEC"
+    }, 
+    {
+        "group": {
+            "name": "mstmip_models_group", 
+            "members": 16, 
+            "leader": false
+        }, 
+        "name": "ISAM", 
+        "global": false, 
+        "value": {
+            "default": "Off", 
+            "type": "choice", 
+            "choices": [
+                "On", 
+                "Off"
+            ]
+        }, 
+        "visible": true, 
+        "key": "_model_ISAM", 
+        "description": "ISAM"
+    }, 
+    {
+        "group": {
+            "name": "mstmip_models_group", 
+            "members": 16, 
+            "leader": false
+        }, 
+        "name": "LPJ-wsl", 
+        "global": false, 
+        "value": {
+            "default": "Off", 
+            "type": "choice", 
+            "choices": [
+                "On", 
+                "Off"
+            ]
+        }, 
+        "visible": true, 
+        "key": "_model_LPJ-wsl", 
+        "description": "LPJ-wsl"
+    }, 
+    {
+        "group": {
+            "name": "mstmip_models_group", 
+            "members": 16, 
+            "leader": false
+        }, 
+        "name": "ORCHIDEE-LSCE", 
+        "global": false, 
+        "value": {
+            "default": "Off", 
+            "type": "choice", 
+            "choices": [
+                "On", 
+                "Off"
+            ]
+        }, 
+        "visible": true, 
+        "key": "_model_ORCHIDEE-LSCE", 
+        "description": "ORCHIDEE-LSCE"
+    }, 
+    {
+        "group": {
+            "name": "mstmip_models_group", 
+            "members": 16, 
+            "leader": false
+        }, 
+        "name": "SiB3", 
+        "global": false, 
+        "value": {
+            "default": "Off", 
+            "type": "choice", 
+            "choices": [
+                "On", 
+                "Off"
+            ]
+        }, 
+        "visible": true, 
+        "key": "_model_SiB3", 
+        "description": "SiB3"
+    }, 
+    {
+        "group": {
+            "name": "mstmip_models_group", 
+            "members": 16, 
+            "leader": false
+        }, 
+        "name": "SiBCASA", 
+        "global": false, 
+        "value": {
+            "default": "Off", 
+            "type": "choice", 
+            "choices": [
+                "On", 
+                "Off"
+            ]
+        }, 
+        "visible": true, 
+        "key": "_model_SiBCASA", 
+        "description": "SiBCASA"
+    }, 
+    {
+        "group": {
+            "name": "mstmip_models_group", 
+            "members": 16, 
+            "leader": false
+        }, 
+        "name": "TEM6", 
+        "global": false, 
+        "value": {
+            "default": "Off", 
+            "type": "choice", 
+            "choices": [
+                "On", 
+                "Off"
+            ]
+        }, 
+        "visible": true, 
+        "key": "_model_TEM6", 
+        "description": "TEM6"
+    }, 
+    {
+        "group": {
+            "name": "mstmip_models_group", 
+            "members": 16, 
+            "leader": false
+        }, 
+        "name": "TRIPLEX-GHG", 
+        "global": false, 
+        "value": {
+            "default": "Off", 
+            "type": "choice", 
+            "choices": [
+                "On", 
+                "Off"
+            ]
+        }, 
+        "visible": true, 
+        "key": "_model_TRIPLEX-GHG", 
+        "description": "TRIPLEX-GHG"
+    }, 
+    {
+        "group": {
+            "name": "mstmip_models_group", 
+            "members": 16, 
+            "leader": false
+        }, 
+        "name": "VEGAS2.1", 
+        "global": false, 
+        "value": {
+            "default": "Off", 
+            "type": "choice", 
+            "choices": [
+                "On", 
+                "Off"
+            ]
+        }, 
+        "visible": true, 
+        "key": "_model_VEGAS21", 
+        "description": "VEGAS2.1"
+    }, 
+    {
+        "group": {
+            "name": "mstmip_models_group", 
+            "members": 16, 
+            "leader": false
+        }, 
+        "name": "VISIT", 
+        "global": false, 
+        "value": {
+            "default": "Off", 
+            "type": "choice", 
+            "choices": [
+                "On", 
+                "Off"
+            ]
+        }, 
+        "visible": true, 
+        "key": "_model_VISIT", 
+        "description": "VISIT"
+    }, 
+    {
+        "group": {
+            "name": "pbs_models_group", 
+            "members": 4, 
+            "leader": true
+        }, 
+        "name": "Model outputs uploaded through the PBS (click to expand)", 
+        "global": false, 
+        "value": {
+            "default": "", 
+            "type": "subheading"
+        }, 
+        "visible": true, 
+        "key": "_pbs_models", 
+        "description": "Model outputs uploaded through the PBS (click to expand)"
+    }, 
+    {
+        "group": {
+            "name": "pbs_models_group", 
+            "members": 1, 
+            "leader": false
+        }, 
+        "name": "CLM4VIC", 
+        "global": false, 
+        "value": {
+            "default": "Off", 
+            "type": "choice", 
+            "choices": [
+                "On", 
+                "Off"
+            ]
+        }, 
+        "visible": true, 
+        "key": "_model_CLM4VIC", 
+        "description": "CLM4VIC"
+    }, 
+    {
+        "group": {
+            "name": "pbs_models_group", 
+            "members": 1, 
+            "leader": false
+        }, 
+        "name": "PBS-test", 
+        "global": false, 
+        "value": {
+            "default": "Off", 
+            "type": "choice", 
+            "choices": [
+                "On", 
+                "Off"
+            ]
+        }, 
+        "visible": true, 
+        "key": "_model_PBS-test", 
+        "description": "PBS-test"
+    }, 
+    {
+        "group": {
+            "name": "pbs_models_group", 
+            "members": 1, 
+            "leader": false
+        }, 
+        "name": "SiBCASA", 
+        "global": false, 
+        "value": {
+            "default": "Off", 
+            "type": "choice", 
+            "choices": [
+                "On", 
+                "Off"
+            ]
+        }, 
+        "visible": true, 
+        "key": "_model_SiBCASA", 
+        "description": "SiBCASA"
+    }, 
+    {
+        "name": "Include mean model calculation?", 
+        "global": false, 
+        "value": {
+            "default": "No", 
+            "type": "choice", 
+            "choices": [
+                "Yes", 
+                "No"
+            ]
+        }, 
+        "visible": true, 
+        "key": "_mean_model", 
+        "description": "Include mean model calculation?"
+    }, 
+    {
+        "key": "separator", 
+        "name": "Variables", 
+        "value": {
+            "default": "", 
+            "type": "string"
+        }, 
+        "description": "Variables"
+    }, 
+    {
+        "name": "Select up to three CMIP5 <a href='http://cmip-pcmdi.llnl.gov/cmip5/output_req.html#req_list'>standard output variables</a> for evaluation. Each variable is compared against all matching benchmark datasets. Optionally, compute relationships between the variables.", 
+        "global": false, 
+        "value": {
+            "default": "", 
+            "type": "overview"
+        }, 
+        "visible": true, 
+        "key": "_overview_variables", 
+        "description": "Select up to three CMIP5 <a href='http://cmip-pcmdi.llnl.gov/cmip5/output_req.html#req_list'>standard output variables</a> for evaluation. Each variable is compared against all matching benchmark datasets. Optionally, compute relationships between the variables."
+    }, 
+    {
+        "name": "Variable 1 (must be present)", 
+        "global": false, 
+        "value": {
+            "default": "gpp", 
+            "type": "choice", 
+            "choices": [
+                "albedo", 
+                "biomass", 
+                "biomes", 
+                "burntArea", 
+                "co2", 
+                "et", 
+                "gpp", 
+                "lai", 
+                "landfraction", 
+                "le", 
+                "nbp", 
+                "nee", 
+                "pr", 
+                "reco", 
+                "rhums", 
+                "rlds", 
+                "rlns", 
+                "rlus", 
+                "rns", 
+                "rsds", 
+                "rsns", 
+                "rsus", 
+                "runoff", 
+                "sh", 
+                "soilc", 
+                "tas", 
+                "twsa"
+            ]
+        }, 
+        "visible": true, 
+        "key": "_variable1", 
+        "description": "Variable 1 (must be present)"
+    }, 
+    {
+        "name": "Variable 2", 
+        "global": false, 
+        "value": {
+            "default": "Off", 
+            "type": "choice", 
+            "choices": [
+                "albedo", 
+                "biomass", 
+                "biomes", 
+                "burntArea", 
+                "co2", 
+                "et", 
+                "gpp", 
+                "lai", 
+                "landfraction", 
+                "le", 
+                "nbp", 
+                "nee", 
+                "pr", 
+                "reco", 
+                "rhums", 
+                "rlds", 
+                "rlns", 
+                "rlus", 
+                "rns", 
+                "rsds", 
+                "rsns", 
+                "rsus", 
+                "runoff", 
+                "sh", 
+                "soilc", 
+                "tas", 
+                "twsa", 
+                "Off"
+            ]
+        }, 
+        "visible": true, 
+        "key": "_variable2", 
+        "description": "Variable 2"
+    }, 
+    {
+        "name": "Variable 3", 
+        "global": false, 
+        "value": {
+            "default": "Off", 
+            "type": "choice", 
+            "choices": [
+                "albedo", 
+                "biomass", 
+                "biomes", 
+                "burntArea", 
+                "co2", 
+                "et", 
+                "gpp", 
+                "lai", 
+                "landfraction", 
+                "le", 
+                "nbp", 
+                "nee", 
+                "pr", 
+                "reco", 
+                "rhums", 
+                "rlds", 
+                "rlns", 
+                "rlus", 
+                "rns", 
+                "rsds", 
+                "rsns", 
+                "rsus", 
+                "runoff", 
+                "sh", 
+                "soilc", 
+                "tas", 
+                "twsa", 
+                "Off"
+            ]
+        }, 
+        "visible": true, 
+        "key": "_variable3", 
+        "description": "Variable 3"
+    }, 
+    {
+        "name": "Calculate relationships between variables?", 
+        "global": false, 
+        "value": {
+            "default": "No", 
+            "type": "choice", 
+            "choices": [
+                "Yes", 
+                "No"
+            ]
+        }, 
+        "visible": true, 
+        "key": "_relationships", 
+        "description": "Calculate relationships between variables?"
+    }, 
+    {
+        "key": "separator", 
+        "name": "Regions", 
+        "value": {
+            "default": "", 
+            "type": "string"
+        }, 
+        "description": "Regions"
+    }, 
+    {
+        "name": "Choose the geographical region where the benchmarking analysis is performed. 'Global' is the default, but predefined <a href='http://www.globalfiredata.org/'>Global Fire Emissions Database</a> (GFED) regions can also be selected, or a custom analysis region can uploaded in a file.", 
+        "global": false, 
+        "value": {
+            "default": "", 
+            "type": "overview"
+        }, 
+        "visible": true, 
+        "key": "_overview_regions", 
+        "description": "Choose the geographical region where the benchmarking analysis is performed. 'Global' is the default, but predefined <a href='http://www.globalfiredata.org/'>Global Fire Emissions Database</a> (GFED) regions can also be selected, or a custom analysis region can uploaded in a file."
+    }, 
+    {
+        "name": "Global", 
+        "global": false, 
+        "value": {
+            "default": "On", 
+            "type": "choice", 
+            "choices": [
+                "On", 
+                "Off"
+            ]
+        }, 
+        "visible": true, 
+        "key": "_region_global", 
+        "description": "Global"
+    }, 
+    {
+        "group": {
+            "name": "regions_group", 
+            "members": 15, 
+            "leader": true
+        }, 
+        "name": "GFED regions (click to expand)", 
+        "global": false, 
+        "value": {
+            "default": "", 
+            "type": "subheading"
+        }, 
+        "visible": true, 
+        "key": "_gfed_regions", 
+        "description": "GFED regions (click to expand)"
+    }, 
+    {
+        "group": {
+            "name": "regions_group", 
+            "members": 15, 
+            "leader": false
+        }, 
+        "name": "Boreal North America (BONA)", 
+        "global": false, 
+        "value": {
+            "default": "Off", 
+            "type": "choice", 
+            "choices": [
+                "On", 
+                "Off"
+            ]
+        }, 
+        "visible": true, 
+        "key": "_region_bona", 
+        "description": "Boreal North America (BONA)"
+    }, 
+    {
+        "group": {
+            "name": "regions_group", 
+            "members": 15, 
+            "leader": false
+        }, 
+        "name": "Temperate North America (TENA)", 
+        "global": false, 
+        "value": {
+            "default": "Off", 
+            "type": "choice", 
+            "choices": [
+                "On", 
+                "Off"
+            ]
+        }, 
+        "visible": true, 
+        "key": "_region_tena", 
+        "description": "Temperate North America (TENA)"
+    }, 
+    {
+        "group": {
+            "name": "regions_group", 
+            "members": 15, 
+            "leader": false
+        }, 
+        "name": "Central America (CEAM)", 
+        "global": false, 
+        "value": {
+            "default": "Off", 
+            "type": "choice", 
+            "choices": [
+                "On", 
+                "Off"
+            ]
+        }, 
+        "visible": true, 
+        "key": "_region_ceam", 
+        "description": "Central America (CEAM)"
+    }, 
+    {
+        "group": {
+            "name": "regions_group", 
+            "members": 15, 
+            "leader": false
+        }, 
+        "name": "Northern Hemisphere South America (NHSA)", 
+        "global": false, 
+        "value": {
+            "default": "Off", 
+            "type": "choice", 
+            "choices": [
+                "On", 
+                "Off"
+            ]
+        }, 
+        "visible": true, 
+        "key": "_region_nhsa", 
+        "description": "Northern Hemisphere South America (NHSA)"
+    }, 
+    {
+        "group": {
+            "name": "regions_group", 
+            "members": 15, 
+            "leader": false
+        }, 
+        "name": "Southern Hemisphere South America (SHSA)", 
+        "global": false, 
+        "value": {
+            "default": "Off", 
+            "type": "choice", 
+            "choices": [
+                "On", 
+                "Off"
+            ]
+        }, 
+        "visible": true, 
+        "key": "_region_shsa", 
+        "description": "Southern Hemisphere South America (SHSA)"
+    }, 
+    {
+        "group": {
+            "name": "regions_group", 
+            "members": 15, 
+            "leader": false
+        }, 
+        "name": "Europe (EURO)", 
+        "global": false, 
+        "value": {
+            "default": "Off", 
+            "type": "choice", 
+            "choices": [
+                "On", 
+                "Off"
+            ]
+        }, 
+        "visible": true, 
+        "key": "_region_euro", 
+        "description": "Europe (EURO)"
+    }, 
+    {
+        "group": {
+            "name": "regions_group", 
+            "members": 15, 
+            "leader": false
+        }, 
+        "name": "Middle East (MIDE)", 
+        "global": false, 
+        "value": {
+            "default": "Off", 
+            "type": "choice", 
+            "choices": [
+                "On", 
+                "Off"
+            ]
+        }, 
+        "visible": true, 
+        "key": "_region_mide", 
+        "description": "Middle East (MIDE)"
+    }, 
+    {
+        "group": {
+            "name": "regions_group", 
+            "members": 15, 
+            "leader": false
+        }, 
+        "name": "Northern Hemisphere Africa (NHAF)", 
+        "global": false, 
+        "value": {
+            "default": "Off", 
+            "type": "choice", 
+            "choices": [
+                "On", 
+                "Off"
+            ]
+        }, 
+        "visible": true, 
+        "key": "_region_nhaf", 
+        "description": "Northern Hemisphere Africa (NHAF)"
+    }, 
+    {
+        "group": {
+            "name": "regions_group", 
+            "members": 15, 
+            "leader": false
+        }, 
+        "name": "Southern Hemisphere Africa (SHAF)", 
+        "global": false, 
+        "value": {
+            "default": "Off", 
+            "type": "choice", 
+            "choices": [
+                "On", 
+                "Off"
+            ]
+        }, 
+        "visible": true, 
+        "key": "_region_shaf", 
+        "description": "Southern Hemisphere Africa (SHAF)"
+    }, 
+    {
+        "group": {
+            "name": "regions_group", 
+            "members": 15, 
+            "leader": false
+        }, 
+        "name": "Boreal Asia (BOAS)", 
+        "global": false, 
+        "value": {
+            "default": "Off", 
+            "type": "choice", 
+            "choices": [
+                "On", 
+                "Off"
+            ]
+        }, 
+        "visible": true, 
+        "key": "_region_boas", 
+        "description": "Boreal Asia (BOAS)"
+    }, 
+    {
+        "group": {
+            "name": "regions_group", 
+            "members": 15, 
+            "leader": false
+        }, 
+        "name": "Central Asia (CEAS)", 
+        "global": false, 
+        "value": {
+            "default": "Off", 
+            "type": "choice", 
+            "choices": [
+                "On", 
+                "Off"
+            ]
+        }, 
+        "visible": true, 
+        "key": "_region_ceas", 
+        "description": "Central Asia (CEAS)"
+    }, 
+    {
+        "group": {
+            "name": "regions_group", 
+            "members": 15, 
+            "leader": false
+        }, 
+        "name": "Southeast Asia (SEAS)", 
+        "global": false, 
+        "value": {
+            "default": "Off", 
+            "type": "choice", 
+            "choices": [
+                "On", 
+                "Off"
+            ]
+        }, 
+        "visible": true, 
+        "key": "_region_seas", 
+        "description": "Southeast Asia (SEAS)"
+    }, 
+    {
+        "group": {
+            "name": "regions_group", 
+            "members": 15, 
+            "leader": false
+        }, 
+        "name": "Equatorial Asia (EQAS)", 
+        "global": false, 
+        "value": {
+            "default": "Off", 
+            "type": "choice", 
+            "choices": [
+                "On", 
+                "Off"
+            ]
+        }, 
+        "visible": true, 
+        "key": "_region_eqas", 
+        "description": "Equatorial Asia (EQAS)"
+    }, 
+    {
+        "group": {
+            "name": "regions_group", 
+            "members": 15, 
+            "leader": false
+        }, 
+        "name": "Australia (AUST)", 
+        "global": false, 
+        "value": {
+            "default": "Off", 
+            "type": "choice", 
+            "choices": [
+                "On", 
+                "Off"
+            ]
+        }, 
+        "visible": true, 
+        "key": "_region_aust", 
+        "description": "Australia (AUST)"
+    }, 
+    {
+        "name": "File (netCDF or text) defining custom analysis region", 
+        "global": false, 
+        "value": {
+            "default": "Off", 
+            "files": [
+                "Off"
+            ], 
+            "type": "file"
+        }, 
+        "visible": true, 
+        "key": "_define_regions_file", 
+        "description": "File (netCDF or text) defining custom analysis region"
+    }, 
+    {
+        "name": "The name of a file in the results to visualize", 
+        "global": false, 
+        "value": {
+            "default": "_build", 
+            "type": "string"
+        }, 
+        "visible": false, 
+        "key": "_visualization", 
+        "description": "The name of a file in the results to visualize"
+    }, 
+    {
+        "name": "Path to the ILAMB configuration file", 
+        "global": false, 
+        "value": {
+            "default": "ilamb.cfg", 
+            "type": "string"
+        }, 
+        "visible": false, 
+        "key": "config_file", 
+        "description": "Path to the ILAMB configuration file"
+    }, 
+    {
+        "name": "Number of times to write output", 
+        "global": false, 
+        "value": {
+            "default": 1, 
+            "range": {
+                "max": 1, 
+                "min": 1
+            }, 
+            "type": "int"
+        }, 
+        "visible": false, 
+        "key": "_output_interval", 
+        "description": "Number of times to write output"
+    }, 
+    {
+        "name": "A list of CMIP5-compatible models to benchmark", 
+        "global": false, 
+        "value": {
+            "default": [], 
+            "type": "list"
+        }, 
+        "visible": false, 
+        "key": "models", 
+        "description": "A list of CMIP5-compatible models to benchmark"
+    }, 
+    {
+        "name": "Simulation run time", 
+        "global": false, 
+        "value": {
+            "default": 1, 
+            "range": {
+                "max": 1, 
+                "min": 1
+            }, 
+            "type": "int"
+        }, 
+        "visible": false, 
+        "key": "_run_duration", 
+        "description": "Simulation run time"
+    }, 
+    {
+        "name": "Interval between port updates", 
+        "global": false, 
+        "value": {
+            "default": 1, 
+            "range": {
+                "max": 1, 
+                "min": 1
+            }, 
+            "type": "int"
+        }, 
+        "visible": false, 
+        "key": "_update_time_step", 
+        "description": "Interval between port updates"
+    }, 
+    {
+        "name": "File format for output", 
+        "global": false, 
+        "value": {
+            "default": "netcdf", 
+            "type": "choice", 
+            "choices": [
+                "netcdf", 
+                "vtk"
+            ]
+        }, 
+        "visible": false, 
+        "key": "_output_format", 
+        "description": "File format for output"
+    }, 
+    {
+        "name": "File (netCDF or text) defining custom analysis region", 
+        "global": false, 
+        "value": {
+            "default": "", 
+            "type": "string"
+        }, 
+        "visible": false, 
+        "key": "define_regions", 
+        "description": "File (netCDF or text) defining custom analysis region"
+    }, 
+    {
+        "name": "Name of ILAMB build directory", 
+        "global": false, 
+        "value": {
+            "default": "_build", 
+            "type": "string"
+        }, 
+        "visible": false, 
+        "key": "build_dir", 
+        "description": "Name of ILAMB build directory"
+    }, 
+    {
+        "name": "Geographical regions over which analysis is performed", 
+        "global": false, 
+        "value": {
+            "default": [], 
+            "type": "list"
+        }, 
+        "visible": false, 
+        "key": "regions", 
+        "description": "Geographical regions over which analysis is performed"
+    }, 
+    {
+        "name": "A list of confrontations to run", 
+        "global": false, 
+        "value": {
+            "default": [], 
+            "type": "list"
+        }, 
+        "visible": false, 
+        "key": "confrontations", 
+        "description": "A list of confrontations to run"
+    }
+]
