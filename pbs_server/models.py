@@ -74,7 +74,7 @@ def update_parameters(parameters, models):
             pbs_group_index = index
 
     for model in models:
-        key = '_model_{}'.format(model)
+        key = '_model_{model}'.format(model=model)
         if not is_key_in_pbs_group(parameters, key):
             entry = model_template.copy()
             entry['key'] = key
