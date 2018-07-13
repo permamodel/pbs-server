@@ -7,7 +7,7 @@ model_template = { "group": { "name": "pbs_models_group", "members":
     "description": "{model_name}" }
 
 
-def get_model_name(pbs_file):
+def get_name(pbs_file):
     """
     Extract the model name from a CMIP5-compatible filename.
 

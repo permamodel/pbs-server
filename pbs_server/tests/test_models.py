@@ -3,7 +3,7 @@
 import os
 import json
 from nose.tools import raises, assert_equal, assert_true, assert_false
-from pbs_server.models import (get_model_name, is_key_in_pbs_group,
+from pbs_server.models import (get_name, is_key_in_pbs_group,
                                update_parameters)
 from pbs_server import data_directory
 
@@ -22,14 +22,14 @@ with open(parameters_file, 'r') as fp:
     parameters = json.load(fp)
 
 
-def test_get_model_name_pass():
-    name = get_model_name(pbs_file_good)
+def test_get_name_pass():
+    name = get_name(pbs_file_good)
     assert_equal(model_name, name)
 
 
 @raises(IndexError)
-def test_get_model_name_fail():
-    name = get_model_name(pbs_file_bad)
+def test_get_name_fail():
+    name = get_name(pbs_file_bad)
 
 
 def test_key_in_pbs_group():
