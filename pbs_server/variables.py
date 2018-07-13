@@ -3,7 +3,7 @@
 import os
 
 
-def get_variable_name(pbs_file):
+def get_name(pbs_file):
     """
     Extract the CMIP5 short variable name from a benchmark data filename.
 
