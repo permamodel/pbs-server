@@ -58,7 +58,7 @@ def update_parameters(parameters, models):
 
     Parameters
     ----------
-    parameters : dict
+    parameters : list
       The contents of the ILAMB `parameters.json` file.
     models : list
       A list of model names whose output has been uploaded into the PBS.
