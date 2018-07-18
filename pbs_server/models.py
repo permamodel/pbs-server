@@ -7,7 +7,7 @@ model_template = { "group": { "name": "pbs_models_group", "members":
     "description": "{model_name}" }
 
 
-def get_model_name(pbs_file):
+def get_name(pbs_file):
     """
     Extract the model name from a CMIP5-compatible filename.
 
@@ -58,7 +58,7 @@ def update_parameters(parameters, models):
 
     Parameters
     ----------
-    parameters : dict
+    parameters : list
       The contents of the ILAMB `parameters.json` file.
     models : list
       A list of model names whose output has been uploaded into the PBS.
