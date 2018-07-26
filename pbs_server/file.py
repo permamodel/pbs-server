@@ -1,5 +1,7 @@
-"""Perform file operations in PBS."""
+"""The `file` module is used to configure and write the ILAMB
+configuration file used by PBS.
 
+"""
 import os
 import yaml
 from netCDF4 import Dataset
@@ -58,6 +60,7 @@ class IlambConfigFile(object):
     """Tool for generating an ILAMB config file."""
 
     sources_file = os.path.join(data_directory, 'cmip5-variables.yaml')
+    """Data for CMIP5 variables."""
 
     def __init__(self,
                  variables,

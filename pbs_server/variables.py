@@ -1,5 +1,7 @@
-"""Perform operations on benchmark data uploaded through PBS."""
+"""The `variables` module contains routines for updating the
+*parameters.json* file of the ILAMB component in PBS.
 
+"""
 import os
 import bisect
 from ConfigParser import SafeConfigParser
@@ -56,7 +58,7 @@ def update_parameters(parameters, variables):
 
 
 def update_template(variable_name, file_name):
-    """Create or update the .cfg.tmpl file for a variable.
+    """Create or update the *.cfg.tmpl* file for a variable.
 
     Parameters
     ----------

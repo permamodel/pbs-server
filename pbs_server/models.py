@@ -1,5 +1,7 @@
-"""Perform operations on models used in PBS."""
+"""The `models` module contains routines for updating the
+*parameters.json* file of the ILAMB component in PBS.
 
+"""
 model_template = { "group": { "name": "pbs_models_group", "members":
     1, "leader": False }, "name": "{model_name}", "global": False,
     "value": { "default": "Off", "type": "choice", "choices": [ "On",
@@ -9,7 +11,8 @@ model_template = { "group": { "name": "pbs_models_group", "members":
 
 def get_name(pbs_file):
     """
-    Extract the model name from a CMIP5-compatible filename.
+    Extract the model name from a `CMIP5-compatible file name
+    <https://cmip.llnl.gov/cmip5/output_req.html>`_.
 
     Parameters
     ----------
