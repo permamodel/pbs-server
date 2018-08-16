@@ -25,10 +25,18 @@ def get_name(pbs_file):
     str
       The name of the variable.
 
+    Notes
+    -----
+    File names are expected in the form:
+
+    .. code-block:: bash
+
+       nep.nc.MDP
+       gpp_0.5x0.5.nc.CSDMS
+
     """
-    base, ext = os.path.splitext(pbs_file)
-    parts = base.split('_')
-    name = parts[0]
+    parts = pbs_file.split('_')
+    name = parts[0].split('_')[0]
     return name
 
 
