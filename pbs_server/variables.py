@@ -58,7 +58,8 @@ def update_parameters(parameters, variables):
 
 
 def update_template(variable_name, file_name):
-    """Create or update the *.cfg.tmpl* file for a variable.
+    """
+    Create or update the *.cfg.tmpl* file for a variable.
 
     Parameters
     ----------
@@ -66,6 +67,18 @@ def update_template(variable_name, file_name):
       A CMIP5 short variable name.
     file_name : str
       The path to the file on the PBS server.
+
+    Notes
+    -----
+    A new *.cfg.tmpl* file should have a format similar to this:
+
+    .. code-block:: bash
+
+        [h2: foo]
+        variable = "foo"
+
+        [CSDMS]
+        source = "DATA-by-project/PBS/foo.nc.CSDMS"
 
     """
     base_file = variable_name + '.cfg.tmpl'
@@ -83,11 +96,12 @@ def update_template(variable_name, file_name):
     if tmpl_file_exists:
         config_existing.read(tmpl_file)
 
-    # If a [PBS] entry doesn't exist, make it.
-    pbs_section = 'PBS'
-    if not config_existing.has_section(pbs_section):
-        config_update.add_section(pbs_section)
-        config_update.set(pbs_section, 'source',
+    # Make a section for the benchmark source_name.
+    base, ext = os.path.splitext(file_name)
+    source_section = ext[1:]
+    if not config_existing.has_section(source_section):
+        config_update.add_section(source_section)
+        config_update.set(source_section, 'source',
                           '"{}"'.format(os.path.join(pbs_data_dir, file_name)))
 
     with open(tmpl_file, 'a') as fp:
