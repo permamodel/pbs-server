@@ -10,8 +10,9 @@ from pbs_server.variables import (get_name, update_parameters,
 from pbs_server import data_directory
 
 
-variable_file = 'gpp_0.5x0.5.nc'
 variable_name = 'gpp'
+source_name = 'CSDMS'
+variable_file = '{}_0.5x0.5.nc.{}'.format(variable_name, source_name)
 old_var = 'tas'
 new_var = 'foo'
 variables = [old_var, new_var]
@@ -54,14 +55,14 @@ def test_update_parameters():
 
 
 def test_create_template():
-    update_template(new_var, '{}.nc'.format(new_var))
+    update_template(new_var, '{}.nc.{}'.format(new_var, source_name))
     config = SafeConfigParser()
     config.read(new_tmpl_file)
-    assert_true(config.has_section('PBS'))
+    assert_true(config.has_section(source_name))
 
 
 def test_update_template():
-    update_template(old_var, '{}.nc'.format(old_var))
+    update_template(old_var, '{}.nc.{}'.format(old_var, source_name))
     config = SafeConfigParser()
     config.read(old_tmpl_file)
-    assert_true(config.has_section('PBS'))
+    assert_true(config.has_section(source_name))
