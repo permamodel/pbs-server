@@ -35,7 +35,7 @@ def get_name(pbs_file):
        gpp_0.5x0.5.nc.CSDMS
 
     """
-    parts = pbs_file.split('_')
+    parts = pbs_file.split('.')
     name = parts[0].split('_')[0]
     return name
 
