@@ -7,6 +7,9 @@ albedo:
 biomass:
   long_name: Biomass
   benchmark_source: GlobalCarbon
+biomes:
+  long_name: Biomes
+  benchmark_source: GFED
 et:
   long_name: Evapotranspiration
   benchmark_source: MODIS
