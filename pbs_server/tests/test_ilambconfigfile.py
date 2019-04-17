@@ -10,7 +10,7 @@ from pbs_server import data_directory
 
 default_config_file = 'ilamb.cfg'
 default_config_file_path = os.path.join(data_directory, default_config_file)
-n_sources = 12
+n_sources = 28
 gpp_template_file = 'gpp.cfg.tmpl'
 relationship = '"LeafAreaIndex/AVHRR"'
 default_title = 'Permafrost Benchmark System'

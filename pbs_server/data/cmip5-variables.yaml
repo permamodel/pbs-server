@@ -7,6 +7,17 @@ albedo:
 biomass:
   long_name: Biomass
   benchmark_source: GlobalCarbon
+biomes:
+  long_name: Biomes
+  benchmark_source: GFED
+burntArea:
+  long_name: BurnedAreaFraction
+  benchmark_source: GFED4S
+co2:
+landfraction:
+et:
+  long_name: Evapotranspiration
+  benchmark_source: MODIS
 gpp:
   long_name: GrossPrimaryProduction
   benchmark_source: Fluxnet-MTE
@@ -16,6 +27,7 @@ lai:
 le:
   long_name: LatentHeat
   benchmark_source: Fluxnet-MTE
+nbp:
 nee:
   long_name: NetEcosystemExchange
   benchmark_source: GBAF
@@ -24,10 +36,20 @@ pr:
   long_name: Precipitation
   benchmark_source: GPCP2
 reco:
+rhums:
+rlds:
+rlns:
+rlus:
+rns:
 rsds:
   long_name: SurfaceDownwardSWRadiation
   benchmark_source: CERES
+rsns:
 rsus:
+runoff:
+sh:
+soilc:
 tas:
   long_name: SurfaceAirTemperature
   benchmark_source: CRU
+twsa:
